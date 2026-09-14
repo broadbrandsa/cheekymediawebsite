@@ -120,6 +120,28 @@ outside the `(site)` group and gets no chrome.
 `src/app/not-found.tsx` stays at the root, because a completely unmatched URL
 never enters the `(site)` group, and pulls in the header and footer itself.
 
+### The migrated catalogue is now in the CMS
+
+All 32 work items were imported into Sanity on 14 September 2026, with their
+images, so everything is editable in the studio rather than only in code. Each
+document has the id `work-<slug>`.
+
+What came across: title, slug, kicker, categories, client, year, summary, cover
+image with alt text, the full written treatment for the ten items that had one,
+and the YouTube URL for the 23 that had a video. Sort order was preserved in
+steps of ten so new work can be slotted between existing items, and the same
+six items stay flagged as featured.
+
+Two things stayed behind. The Man Cave's self-hosted intro clip has no field in
+the schema, so it still comes from `src/content/work.ts`; uploading that video
+to the channel would tidy it up. And the static catalogue itself is kept as a
+fallback, which is what the site falls back to if Sanity is unreachable or the
+environment variables go missing.
+
+`scripts/` holds the import tooling if it ever needs rebuilding from scratch.
+Note the import overwrites by document id, so re-running it would discard
+edits made in the studio.
+
 ### How the CMS connects to the work
 
 `src/lib/content.ts` merges the two. `getWork()` fetches from Sanity, maps it to
