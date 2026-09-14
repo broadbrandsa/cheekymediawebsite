@@ -16,6 +16,10 @@ export const postSlugsQuery = groq`
   *[_type == "post" && defined(slug.current)][].slug.current
 `;
 
+export const projectSlugsQuery = groq`
+  *[_type == "project" && defined(slug.current)][].slug.current
+`;
+
 export const projectsQuery = groq`
   *[_type == "project" && defined(slug.current)] | order(order asc, _createdAt desc) {
     _id, title, "slug": slug.current, kicker, categories, client, year,

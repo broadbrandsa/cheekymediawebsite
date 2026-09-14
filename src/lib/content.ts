@@ -4,6 +4,7 @@ import {
   postBySlugQuery,
   postsQuery,
   projectBySlugQuery,
+  projectSlugsQuery,
   projectsQuery,
 } from "@/sanity/queries";
 import type { SanityPost, SanityProject } from "@/sanity/types";
@@ -46,6 +47,11 @@ export function toCardItem(w: WorkItem): WorkCardItem {
     summary: w.summary,
     client: w.client,
   };
+}
+
+/** Slugs of work published in the CMS, so those pages prerender too. */
+export async function getProjectSlugs(): Promise<string[]> {
+  return sanityFetch<string[]>(projectSlugsQuery, {}, []);
 }
 
 export async function getProject(slug: string) {

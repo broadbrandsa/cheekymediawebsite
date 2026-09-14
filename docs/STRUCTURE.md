@@ -107,6 +107,21 @@ shouldn't drift.
 journal posts and new work. The studio runs at `/studio` inside the site itself,
 so there is nothing extra to host.
 
+### Route groups
+
+`src/app/layout.tsx` is the root layout and carries only `<html>`, `<body>`,
+fonts, metadata and the Organization schema. The header, footer and skip link
+live in `src/app/(site)/layout.tsx`.
+
+That split exists because Sanity Studio is a full-screen application. Rendered
+inside the site header and footer it does not work properly, so `/studio` sits
+outside the `(site)` group and gets no chrome.
+
+`src/app/not-found.tsx` stays at the root, because a completely unmatched URL
+never enters the `(site)` group, and pulls in the header and footer itself.
+
+### How the CMS connects to the work
+
 `src/lib/content.ts` merges the two. `getWork()` fetches from Sanity, maps it to
 the same shape as the static catalogue, and appends any static items whose slug
 is not already in the CMS. So:
@@ -114,6 +129,26 @@ is not already in the CMS. So:
 - Nothing in the CMS: the site runs entirely on the migrated catalogue
 - An item added to the CMS: it appears first in the grid
 - An item added with a slug that matches a migrated one: the CMS version wins
+
+Every surface that shows work reads from that merge, not from the static file:
+
+| Surface | Reads |
+|---|---|
+| Homepage featured strip | `getWork()`, first six |
+| `/work` grid and filters | `getWork()` |
+| `/work/[slug]` | `getProject()` first, static entry as fallback, field by field |
+| Related work on a detail page | `getWork()` |
+| `generateStaticParams` | CMS slugs plus static slugs, so CMS-only work prerenders |
+| `generateMetadata` | CMS title, summary and cover image, falling back to static |
+| Sitemap | static slugs today; CMS work is reachable and indexable via ISR |
+
+A CMS entry's rich `body` renders through `src/components/portable-text.tsx`,
+shared with the journal. A migrated entry's plain paragraphs render as before,
+so both shapes work on the same page. `videoUrl` takes a full YouTube URL and
+the id is parsed out at render.
+
+The work pages carry `revalidate = 60`, matching the journal, so a change in
+the studio appears within a minute rather than waiting for a redeploy.
 
 The whole CMS layer is optional. `isSanityConfigured` is false when
 `NEXT_PUBLIC_SANITY_PROJECT_ID` is unset, `sanityFetch` returns the fallback

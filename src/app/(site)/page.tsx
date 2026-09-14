@@ -10,6 +10,8 @@ import { Stats } from "@/components/sections/stats";
 import { Team } from "@/components/sections/team";
 import { getWork } from "@/lib/content";
 
+export const revalidate = 60;
+
 export default async function HomePage() {
   const all = await getWork();
 

@@ -7,25 +7,37 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Cta } from "@/components/sections/cta";
 import { VideoPlayer } from "@/components/video-player";
 import { WorkCard } from "@/components/work-card";
+import { RichText } from "@/components/portable-text";
 import { work, workBySlug } from "@/content/work";
-import { toCardItem } from "@/lib/content";
-import { getProject } from "@/lib/content";
+import { getProject, getProjectSlugs, getWork } from "@/lib/content";
 import { urlFor } from "@/sanity/client";
 
-export function generateStaticParams() {
-  return work.map((w) => ({ slug: w.slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const cmsSlugs = await getProjectSlugs();
+  const slugs = new Set([...cmsSlugs, ...work.map((w) => w.slug)]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<"/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const item = workBySlug(slug);
-  if (!item) return { title: "Work" };
+  const cms = await getProject(slug);
+  const stat = workBySlug(slug);
+  if (!cms && !stat) return { title: "Work" };
+
+  const title = cms?.title ?? stat!.title;
+  const description = cms?.summary ?? stat!.summary;
+  const image = cms?.coverImage
+    ? urlFor(cms.coverImage)?.width(1200).height(630).fit("crop").url()
+    : stat?.image;
+
   return {
-    title: item.title,
-    description: item.summary,
-    openGraph: { images: [item.image] },
+    title,
+    description,
+    openGraph: image ? { images: [image] } : undefined,
   };
 }
 
@@ -38,16 +50,21 @@ export default async function WorkDetailPage({
   const stat = workBySlug(slug);
   if (!cms && !stat) notFound();
 
-  const title = cms?.title ?? stat!.title;
+  const title = cms?.title ?? stat?.title ?? "";
   const kicker = cms?.kicker ?? stat?.kicker;
-  const categories = cms?.categories ?? stat!.categories;
+  const categories = cms?.categories?.length
+    ? cms.categories
+    : (stat?.categories ?? []);
   const client = cms?.client ?? stat?.client;
-  const summary = cms?.summary ?? stat!.summary;
+  const summary = cms?.summary ?? stat?.summary ?? "";
   const image =
-    (cms &&
-      urlFor(cms.coverImage)?.width(1800).height(1000).fit("crop").url()) ??
-    stat!.image;
-  const body = stat?.body ?? [];
+    (cms?.coverImage &&
+      urlFor(cms.coverImage)?.width(1800).height(1000).fit("crop").url()) ||
+    stat?.image ||
+    "";
+  // Static entries carry plain paragraphs; CMS entries carry Portable Text.
+  const staticBody = stat?.body ?? [];
+  const richBody = cms?.body;
   // The CMS stores a full URL; the migrated catalogue stores the bare id.
   const cmsVideoId = cms?.videoUrl?.match(
     /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/,
@@ -56,12 +73,12 @@ export default async function WorkDetailPage({
   const videoFile = stat?.videoFile;
   const hasVideo = Boolean(videoId || videoFile);
 
-  const related = work
+  const all = await getWork();
+  const related = all
     .filter(
       (w) => w.slug !== slug && w.categories.some((c) => categories.includes(c)),
     )
-    .slice(0, 3)
-    .map(toCardItem);
+    .slice(0, 3);
 
   return (
     <>
@@ -141,12 +158,18 @@ export default async function WorkDetailPage({
             </a>
           )}
 
-          {body.length > 0 && (
-            <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
-              {body.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+          {richBody?.length ? (
+            <div className="mt-8">
+              <RichText value={richBody} />
             </div>
+          ) : (
+            staticBody.length > 0 && (
+              <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
+                {staticBody.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+            )
           )}
         </div>
       </article>

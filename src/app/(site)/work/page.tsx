@@ -6,6 +6,8 @@ import { WorkGrid } from "@/components/work-grid";
 import { workCategories } from "@/content/work";
 import { getWork } from "@/lib/content";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Work",
   description:
