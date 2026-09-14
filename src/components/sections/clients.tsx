@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { about } from "@/content/about";
 
 export function Clients() {
@@ -7,13 +9,17 @@ export function Clients() {
         <p className="eyebrow text-center text-muted-foreground">
           Broadcasters and brands we have worked with
         </p>
-        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
-          {about.clients.map((client) => (
-            <li
-              key={client}
-              className="font-display text-lg font-bold tracking-tight text-muted-foreground/70 transition-colors hover:text-primary sm:text-xl"
-            >
-              {client}
+
+        <ul className="mt-8 grid grid-cols-2 items-center gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+          {about.clientLogos.map((client) => (
+            <li key={client.name} className="flex justify-center">
+              <Image
+                src={client.src}
+                alt={client.name}
+                width={500}
+                height={500}
+                className="h-20 w-auto max-w-[170px] object-contain opacity-65 mix-blend-multiply grayscale transition-opacity duration-300 hover:opacity-100 dark:opacity-80 dark:mix-blend-normal dark:invert"
+              />
             </li>
           ))}
         </ul>

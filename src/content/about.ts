@@ -18,6 +18,16 @@ export const about = {
     { value: "In house", label: "Studios and post" },
     { value: "Africa", label: "Footprint" },
   ],
+  /** Logo marks that were in the old site's media library. */
+  clientLogos: [
+    { name: "SABC", src: "/images/clients/sabc.png" },
+    { name: "MultiChoice", src: "/images/clients/multichoice.png" },
+    { name: "Vodacom", src: "/images/clients/vodacom.png" },
+    { name: "Nedbank", src: "/images/clients/nedbank.png" },
+    { name: "Nestlé", src: "/images/clients/nestle.png" },
+    { name: "Tiger Brands", src: "/images/clients/tiger-brands.png" },
+  ],
+  /** Named in the About copy or portfolio credits, but with no logo on file. */
   clients: [
     "SABC",
     "MultiChoice",
@@ -28,6 +38,7 @@ export const about = {
     "MTN",
     "FNB",
     "SA Tourism",
+    "Tiger Brands",
     "African Bank",
   ],
 };
