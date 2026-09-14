@@ -91,21 +91,62 @@ not end up in the production analytics property.
 
 ## Sanity setup
 
-1. Create a project at https://sanity.io/manage
-2. Copy the project ID into `NEXT_PUBLIC_SANITY_PROJECT_ID`
-3. Under API, add CORS origins for `http://localhost:3000`, the Vercel
-   production domain, and `https://*.vercel.app` for previews. Tick "allow
-   credentials" for each.
-4. Invite the people who will publish, under Members. Editor is the right role
-   for most of them; Administrator only for whoever manages the project.
-5. Redeploy so the environment variables take effect
+**The project already exists and is connected locally.**
 
-The studio is then live at `/studio` on the deployed site. Editors sign in with
-their Sanity account. The route is set to `noindex` and is disallowed in
-`robots.txt`, so it stays out of search results.
+| | |
+|---|---|
+| Project | Cheeky Media |
+| Project ID | `rcfto3ru` |
+| Dataset | `production` |
+| Studio | `/studio` on whatever domain the site is running on |
+| Manage | https://www.sanity.io/manage/project/rcfto3ru |
 
-New posts and work appear on the site within 60 seconds, because the journal and
-work pages revalidate on that interval.
+`sanity.cli.ts` holds the project id so CLI commands work without flags. The id
+is public, not a secret, which is why it is committed.
+
+### Still to do
+
+1. **Add the environment variables in Vercel.** `.env.local` is gitignored, so
+   the deployed site does not have them yet and will fall back to the migrated
+   catalogue until it does:
+
+   ```
+   NEXT_PUBLIC_SANITY_PROJECT_ID=rcfto3ru
+   NEXT_PUBLIC_SANITY_DATASET=production
+   ```
+
+2. **Add CORS origins for the deployed domains.** `http://localhost:3000` is
+   already allowed. After the first deploy, add the production domain and the
+   preview wildcard:
+
+   ```bash
+   npx sanity cors add https://your-domain.com --credentials
+   npx sanity cors add https://your-project.vercel.app --credentials
+   ```
+
+3. **Invite the people who will publish**, under Members at the manage link
+   above. Editor is the right role for most; Administrator only for whoever
+   owns the project.
+
+### Verified working
+
+The full round trip was tested with real documents, published through the API
+and confirmed rendering on the site, then deleted:
+
+- A journal post appeared on `/journal` and its own page, with body and author.
+- A work item appeared on `/work`, on the homepage featured strip, and on its
+  own page, with the rich text body, the Sanity CDN image, the parsed YouTube
+  video and its categories.
+- After deletion the site fell back cleanly to the 32 migrated work items and
+  the journal empty state.
+
+One thing that testing caught: `next.config.ts` had no `remotePatterns`, so
+`next/image` rejected every Sanity CDN URL and any page with a CMS image
+returned a 500. Fixed, but it would not have shown up without a live project.
+
+One stray asset remains in the dataset from that test, the uploaded socrati.jpg.
+It is unreferenced and harmless; delete it in the studio under Media if you
+want a clean slate.
 
 ## Resend setup
 
