@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 import { ContactForm } from "@/components/contact-form";
 import { PageHeader } from "@/components/page-header";
+import { SocialLinks } from "@/components/social-links";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -80,6 +81,11 @@ export default function ContactPage() {
                 </a>
               </li>
             </ul>
+
+            <div className="mt-8 border-t border-border pt-6">
+              <h3 className="label-mono text-muted-foreground">Follow us</h3>
+              <SocialLinks className="mt-4" />
+            </div>
           </div>
 
           <div className="mt-6 overflow-hidden rounded-3xl border border-border">

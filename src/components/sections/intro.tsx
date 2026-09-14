@@ -41,7 +41,7 @@ export function Intro() {
             </p>
             <Link
               href="/about"
-              className="label-mono mt-7 inline-flex items-center gap-2 rounded-pill border border-border px-5 py-3 transition-colors hover:bg-secondary"
+              className="label-mono mt-7 inline-flex items-center gap-2 rounded-pill border border-border px-5 py-4 transition-colors hover:bg-secondary"
             >
               More about us
               <ArrowUpRight className="size-3.5" />

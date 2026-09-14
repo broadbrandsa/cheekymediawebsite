@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
+import { SocialLinks } from "@/components/social-links";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 
@@ -29,6 +30,8 @@ export function SiteFooter() {
               Your brand is more than a logo. It is a story, and we are here to
               tell it.
             </p>
+            <h2 className="sr-only">Follow Cheeky Media</h2>
+            <SocialLinks className="mt-8" />
           </div>
 
           <nav className="md:col-span-3">

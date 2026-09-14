@@ -203,3 +203,25 @@ focus rings on everything focusable, and a working skip link.
 marquee has its own `prefers-reduced-motion` rule, because the blanket
 reduced-motion reset would otherwise freeze it halfway through its travel
 rather than at its start.
+
+## Social profiles
+
+Defined once in `src/content/site.ts` under `social`, rendered by
+`src/components/social-links.tsx`, and surfaced in three places: the footer,
+the contact page sidebar, and the mobile menu.
+
+| Profile | URL |
+|---|---|
+| Facebook | https://www.facebook.com/CheekyMediaSA |
+| Instagram | https://www.instagram.com/cheeky_studios_sa/ |
+| X | https://x.com/CheekyMediaSA |
+| YouTube | https://www.youtube.com/@CheekyMedia |
+
+The same list feeds `sameAs` in the Organization JSON-LD in the root layout,
+which is how Google ties the profiles to the business. Adding a profile means
+editing `site.ts` only; everything else follows.
+
+Icons live in `src/components/social-icons.tsx` as filled brand glyphs. Lucide
+removed its social icons over trademark concerns, and a stroke-style
+approximation of a logo reads as wrong next to the real mark, so these are the
+official paths rather than a lucide substitute.

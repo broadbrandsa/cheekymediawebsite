@@ -52,6 +52,30 @@ export const metadata: Metadata = {
   icons: { icon: "/images/brand/favicon.png" },
 };
 
+/**
+ * Organization schema. `sameAs` is what lets Google tie the social profiles to
+ * the business, which is the main SEO value of listing them.
+ */
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/images/brand/logo-navy.png`,
+  description: site.description,
+  foundingDate: String(site.founded),
+  email: site.contact.email,
+  telephone: "+27112584465",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "43 Central St",
+    addressLocality: "Houghton Estate, Johannesburg",
+    postalCode: "2198",
+    addressCountry: "ZA",
+  },
+  sameAs: site.social.map((s) => s.href),
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -60,6 +84,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"

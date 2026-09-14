@@ -143,6 +143,18 @@ to the channel so it matches everything else.
 New work added through the CMS takes a full YouTube URL in the `videoUrl`
 field; the id is parsed out of it at render time.
 
+## Social profiles
+
+Facebook, Instagram and X were supplied directly. All three resolve, and the
+Facebook page title confirms it is the right account ("Cheeky Media South
+Africa"); a plain request to Facebook returns 400 because it blocks
+non-browser traffic, not because the page is missing.
+
+**YouTube was added on my own initiative.** The channel
+(youtube.com/@CheekyMedia) is where all 24 work videos are hosted, so the site
+already depends on it, and leaving it out of the social list would have been
+odd. Say the word if it should not be listed alongside the others.
+
 ## Things deliberately not carried over
 
 - The Slider Revolution hero video. The source `TMC-S7-INTRO_1.mp4` was

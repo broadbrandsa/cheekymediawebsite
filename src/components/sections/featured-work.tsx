@@ -16,7 +16,7 @@ export function FeaturedWork({ items }: { items: WorkCardItem[] }) {
           </div>
           <Link
             href="/work"
-            className="label-mono inline-flex items-center gap-2 rounded-pill border border-border px-5 py-3 transition-colors hover:bg-secondary"
+            className="label-mono inline-flex items-center gap-2 rounded-pill border border-border px-5 py-4 transition-colors hover:bg-secondary"
           >
             View everything
             <ArrowUpRight className="size-3.5" />

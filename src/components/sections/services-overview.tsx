@@ -17,7 +17,7 @@ export function ServicesOverview() {
           </div>
           <Link
             href="/services"
-            className="label-mono inline-flex items-center gap-2 rounded-pill border border-on-contrast/25 px-5 py-3 transition-colors hover:bg-on-contrast/10"
+            className="label-mono inline-flex items-center gap-2 rounded-pill border border-on-contrast/25 px-5 py-4 transition-colors hover:bg-on-contrast/10"
           >
             All services
             <ArrowUpRight className="size-3.5" />

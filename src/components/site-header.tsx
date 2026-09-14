@@ -12,6 +12,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { SocialLinks } from "@/components/social-links";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -106,7 +107,7 @@ export function SiteHeader() {
           <div className="flex h-full items-center gap-3 sm:border-l sm:border-border sm:pl-6">
             <Link
               href="/contact"
-              className="label-mono hidden items-center gap-2 rounded-pill bg-primary px-5 py-3 text-primary-foreground transition-colors hover:opacity-85 sm:inline-flex"
+              className="label-mono hidden items-center gap-2 rounded-pill bg-primary px-5 py-4 text-primary-foreground transition-colors hover:opacity-85 sm:inline-flex"
             >
               Start a project
               <ArrowUpRight className="size-3.5" />
@@ -167,6 +168,7 @@ export function SiteHeader() {
                     Start a project
                     <ArrowUpRight className="size-3.5" />
                   </Link>
+                  <SocialLinks tone="contrast" className="mt-8" />
                 </nav>
               </SheetContent>
             </Sheet>

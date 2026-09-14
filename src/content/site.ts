@@ -8,7 +8,12 @@ export const site = {
   founded: 2014,
   /** Cheeky Media showreel, from the About page of the old site. */
   showreelId: "sDi4WLVuzfU",
-  youtube: "https://www.youtube.com/@CheekyMedia",
+  social: [
+    { label: "Facebook", href: "https://www.facebook.com/CheekyMediaSA" },
+    { label: "Instagram", href: "https://www.instagram.com/cheeky_studios_sa/" },
+    { label: "X", href: "https://x.com/CheekyMediaSA" },
+    { label: "YouTube", href: "https://www.youtube.com/@CheekyMedia" },
+  ],
   contact: {
     phone: "011 258 4465",
     phoneHref: "tel:+27112584465",

@@ -134,7 +134,7 @@ export default async function WorkDetailPage({
               href={`https://www.youtube.com/watch?v=${videoId}`}
               target="_blank"
               rel="noreferrer"
-              className="label-mono mt-8 inline-flex items-center gap-2 rounded-pill border border-border px-5 py-3 transition-colors hover:bg-secondary"
+              className="label-mono mt-8 inline-flex items-center gap-2 rounded-pill border border-border px-5 py-4 transition-colors hover:bg-secondary"
             >
               Watch on YouTube
               <ArrowUpRight className="size-3.5" />
