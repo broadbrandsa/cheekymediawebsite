@@ -52,7 +52,7 @@ export default async function JournalPage() {
             </p>
             <Link
               href="/studio"
-              className="mt-6 inline-block font-medium text-coral hover:underline"
+              className="mt-6 inline-block font-medium text-coral-text hover:underline"
             >
               Open the studio
             </Link>

@@ -6,7 +6,7 @@ export function Team() {
   return (
     <section className="section-y">
       <div className="shell">
-        <p className="label-mono text-coral">Our team</p>
+        <p className="label-mono text-coral-text">Our team</p>
         <h2 className="type-h2 mt-5 max-w-[14ch]">The people who make it</h2>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

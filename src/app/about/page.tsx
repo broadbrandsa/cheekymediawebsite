@@ -33,7 +33,7 @@ export default function AboutPage() {
 
           <aside className="lg:col-span-5">
             <div className="rounded-3xl border border-border bg-card p-8">
-              <h2 className="label-mono text-coral">Transformation</h2>
+              <h2 className="label-mono text-coral-text">Transformation</h2>
               <p className="mt-6 leading-relaxed text-muted-foreground">
                 {about.transformation}
               </p>

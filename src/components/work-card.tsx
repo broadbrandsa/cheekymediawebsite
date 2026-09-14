@@ -61,7 +61,7 @@ export function WorkCard({
           {item.title}
         </h3>
         {item.kicker && (
-          <p className="mt-1.5 font-display text-lg italic text-coral">
+          <p className="mt-1.5 font-display text-lg italic text-coral-text">
             {item.kicker}
           </p>
         )}

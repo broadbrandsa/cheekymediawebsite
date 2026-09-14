@@ -2,15 +2,23 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark {
+  &:is(.dark *) { @slot; }
+  @media (prefers-color-scheme: dark) {
+    &:is(:root:not(.light):not([data-theme="light"]) *) { @slot; }
+  }
+}
 
 @theme inline {
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+  --color-contrast: var(--contrast);
+  --color-on-contrast: var(--on-contrast);
   --color-navy: var(--navy);
   --color-navy-600: var(--navy-600);
   --color-coral: var(--coral);
   --color-coral-deep: var(--coral-deep);
+  --color-coral-text: var(--coral-text);
   --color-cream: var(--cream);
   --color-sand: var(--sand);
   --color-sand-deep: var(--sand-deep);
@@ -76,9 +84,14 @@
   --sand-deep: oklch(0.8904 0.0232 84.59);
   --coral: oklch(0.6387 0.1806 32.54);
   --coral-deep: oklch(0.5667 0.1742 32.18);
+  /* Small coral text needs more weight than the display coral to clear 4.5:1. */
+  --coral-text: oklch(0.5200 0.1750 32.50);
   --stone: oklch(0.6184 0.0146 82.39);
   --line: oklch(0.8622 0.0218 85.95);
   --line-dark: oklch(0.3574 0.0420 251.62);
+  /* Inverted section surface, so the light/dark rhythm survives both themes. */
+  --contrast: var(--ink);
+  --on-contrast: var(--cream);
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -96,7 +109,7 @@
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: var(--line);
-  --input: var(--line);
+  --input: oklch(0.6200 0.0220 86.00);
   --ring: var(--navy-600);
   --chart-1: var(--navy);
   --chart-2: var(--navy-600);
@@ -124,9 +137,12 @@
   --sand-deep: oklch(0.3100 0.0380 252.00);
   --coral: oklch(0.6900 0.1750 33.00);
   --coral-deep: oklch(0.6387 0.1806 32.54);
+  --coral-text: oklch(0.7200 0.1700 33.00);
   --stone: oklch(0.6600 0.0170 84.00);
   --line: oklch(1 0 0 / 14%);
   --line-dark: oklch(1 0 0 / 14%);
+  --contrast: oklch(0.2400 0.0360 253.00);
+  --on-contrast: oklch(0.9600 0.0080 87.00);
 
   --background: oklch(0.1700 0.0300 253.00);
   --foreground: oklch(0.9600 0.0080 87.00);
@@ -172,7 +188,62 @@
     @apply font-sans;
   }
 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+  --ink: oklch(0.1700 0.0300 253.00);
+  --ink-soft: oklch(0.2300 0.0360 253.00);
+  --navy: oklch(0.4167 0.0994 251.17);
+  --navy-600: oklch(0.6000 0.1100 248.00);
+  --cream: oklch(0.9600 0.0080 87.00);
+  --sand: oklch(0.2600 0.0330 252.00);
+  --sand-deep: oklch(0.3100 0.0380 252.00);
+  --coral: oklch(0.6900 0.1750 33.00);
+  --coral-deep: oklch(0.6387 0.1806 32.54);
+  --coral-text: oklch(0.7200 0.1700 33.00);
+  --stone: oklch(0.6600 0.0170 84.00);
+  --line: oklch(1 0 0 / 14%);
+  --line-dark: oklch(1 0 0 / 14%);
+  --contrast: oklch(0.2400 0.0360 253.00);
+  --on-contrast: oklch(0.9600 0.0080 87.00);
+
+  --background: oklch(0.1700 0.0300 253.00);
+  --foreground: oklch(0.9600 0.0080 87.00);
+  --card: oklch(0.2200 0.0345 253.00);
+  --card-foreground: oklch(0.9600 0.0080 87.00);
+  --popover: oklch(0.2200 0.0345 253.00);
+  --popover-foreground: oklch(0.9600 0.0080 87.00);
+  --primary: oklch(0.9600 0.0080 87.00);
+  --primary-foreground: oklch(0.1700 0.0300 253.00);
+  --secondary: oklch(0.2600 0.0330 252.00);
+  --secondary-foreground: oklch(0.9600 0.0080 87.00);
+  --muted: oklch(0.2600 0.0330 252.00);
+  --muted-foreground: oklch(0.7400 0.0200 250.00);
+  --accent: oklch(0.6900 0.1750 33.00);
+  --accent-foreground: oklch(0.1700 0.0300 253.00);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.6000 0.1100 248.00);
+  --chart-1: oklch(0.6900 0.1750 33.00);
+  --chart-2: oklch(0.6000 0.1100 248.00);
+  --chart-3: oklch(0.7600 0.0900 250.00);
+  --chart-4: oklch(0.6600 0.0170 84.00);
+  --chart-5: oklch(0.4167 0.0994 251.17);
+  --sidebar: oklch(0.1700 0.0300 253.00);
+  --sidebar-foreground: oklch(0.9600 0.0080 87.00);
+  --sidebar-primary: oklch(0.6900 0.1750 33.00);
+  --sidebar-primary-foreground: oklch(0.1700 0.0300 253.00);
+  --sidebar-accent: oklch(0.2600 0.0330 252.00);
+  --sidebar-accent-foreground: oklch(0.9600 0.0080 87.00);
+  --sidebar-border: oklch(1 0 0 / 14%);
+  --sidebar-ring: oklch(0.6000 0.1100 248.00);
+  }
+}
+
 @layer base {
+  html, body {
+    overflow-x: clip;
+  }
   html {
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
@@ -188,6 +259,12 @@
   }
   p { text-wrap: pretty; }
   ::selection { background: var(--coral); color: white; }
+  /* Keyboard focus must always be visible. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
 @layer utilities {
@@ -269,3 +346,9 @@
   animation: marquee-scroll 45s linear infinite;
 }
 .marquee:hover { animation-play-state: paused; }
+
+/* The blanket reduced-motion rule below would leave the marquee stopped
+   halfway through its travel, so reset it to its start instead. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none !important; transform: none !important; }
+}

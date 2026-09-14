@@ -37,6 +37,7 @@ export function WorkGrid({
 
   return (
     <div>
+      <h2 className="sr-only">Browse the work</h2>
       <div
         role="tablist"
         aria-label="Filter work by category"
@@ -52,9 +53,9 @@ export function WorkGrid({
               aria-selected={isActive}
               onClick={() => pick(cat)}
               className={cn(
-                "label-mono rounded-pill border px-5 py-3 transition-colors",
+                "label-mono rounded-pill border px-5 py-4 transition-colors",
                 isActive
-                  ? "border-ink bg-ink text-cream"
+                  ? "border-primary bg-primary text-primary-foreground"
                   : "border-border text-muted-foreground hover:border-ink/40 hover:text-foreground",
               )}
             >
@@ -63,6 +64,11 @@ export function WorkGrid({
           );
         })}
       </div>
+
+      <p aria-live="polite" className="sr-only">
+        {filtered.length} {filtered.length === 1 ? "project" : "projects"} in{" "}
+        {active}
+      </p>
 
       {shown.length === 0 ? (
         <p className="mt-16 text-center text-muted-foreground">

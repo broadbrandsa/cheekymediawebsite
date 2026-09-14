@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Loader2, Send } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -40,21 +39,23 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-xl border border-coral/30 bg-coral/5 p-8">
-        <h2 className="font-display text-2xl font-bold tracking-tight">
+      <div
+        role="status"
+        aria-live="polite" className="rounded-3xl border border-coral/30 bg-coral/5 p-8">
+        <h2 className="type-h3">
           Thanks, that came through.
         </h2>
         <p className="mt-3 leading-relaxed text-muted-foreground">
           We will come back to you shortly. If it is urgent, give us a call on{" "}
           <span className="font-medium text-foreground">011 258 4465</span>.
         </p>
-        <Button
-          variant="outline"
-          className="mt-6"
+        <button
+          type="button"
           onClick={() => setStatus("idle")}
+          className="label-mono mt-6 inline-flex items-center rounded-pill border border-border px-6 py-4 transition-colors hover:bg-secondary"
         >
           Send another
-        </Button>
+        </button>
       </div>
     );
   }
@@ -69,11 +70,11 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="name">Name</Label>
+          <Label className="label-mono" htmlFor="name">Name</Label>
           <Input id="name" name="name" required autoComplete="name" />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label className="label-mono" htmlFor="email">Email</Label>
           <Input
             id="email"
             name="email"
@@ -86,13 +87,13 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="phone">
+          <Label className="label-mono" htmlFor="phone">
             Phone <span className="text-muted-foreground">(optional)</span>
           </Label>
           <Input id="phone" name="phone" type="tel" autoComplete="tel" />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="company">
+          <Label className="label-mono" htmlFor="company">
             Company <span className="text-muted-foreground">(optional)</span>
           </Label>
           <Input id="company" name="company" autoComplete="organization" />
@@ -100,21 +101,22 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message">What are you working on?</Label>
+        <Label className="label-mono" htmlFor="message">What are you working on?</Label>
         <Textarea id="message" name="message" rows={6} required />
       </div>
 
-      {status === "error" && (
-        <p role="alert" className="text-sm text-destructive">
-          {error}
-        </p>
-      )}
+      <div aria-live="assertive">
+        {status === "error" && (
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+        )}
+      </div>
 
-      <Button
+      <button
         type="submit"
-        size="lg"
         disabled={status === "sending"}
-        className="w-full sm:w-auto"
+        className="label-mono inline-flex w-full items-center justify-center gap-2 rounded-pill bg-primary px-7 py-4 text-primary-foreground transition-colors hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {status === "sending" ? (
           <>
@@ -124,10 +126,10 @@ export function ContactForm() {
         ) : (
           <>
             Send message
-            <Send className="size-4" />
+            <Send className="size-3.5" />
           </>
         )}
-      </Button>
+      </button>
     </form>
   );
 }

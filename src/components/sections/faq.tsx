@@ -37,7 +37,7 @@ export function Faq() {
     <section className="section-y">
       <div className="shell grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4">
-          <p className="label-mono text-coral">FAQ</p>
+          <p className="label-mono text-coral-text">FAQ</p>
           <h2 className="type-h2 mt-5">Questions we get asked</h2>
           <p className="mt-6 leading-relaxed text-muted-foreground">
             Something not covered here? Give us a call on{" "}

@@ -27,7 +27,7 @@ export function Hero() {
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/work"
-            className="label-mono inline-flex w-full items-center justify-center gap-2 rounded-pill bg-ink px-7 py-4 text-cream transition-colors hover:bg-ink-soft sm:w-auto"
+            className="label-mono inline-flex w-full items-center justify-center gap-2 rounded-pill bg-primary px-7 py-4 text-primary-foreground transition-colors hover:opacity-85 sm:w-auto"
           >
             See the work
             <ArrowUpRight className="size-3.5" />

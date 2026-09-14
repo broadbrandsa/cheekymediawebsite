@@ -30,12 +30,12 @@ export function SiteHeader() {
   return (
     <>
       {/* Thin announcement strip, as on the reference headers. */}
-      <div className="bg-ink text-cream">
+      <div className="bg-contrast text-on-contrast">
         <Link
           href="/about"
           className="shell flex h-9 items-center justify-center gap-2 transition-opacity hover:opacity-80"
         >
-          <p className="label-mono truncate text-cream/70">
+          <p className="label-mono truncate text-on-contrast/70">
             <span className="sm:hidden">Level 1 BBBEE</span>
             <span className="hidden sm:inline">
               Level 1 BBBEE, black owned and managed
@@ -106,7 +106,7 @@ export function SiteHeader() {
           <div className="flex h-full items-center gap-3 sm:border-l sm:border-border sm:pl-6">
             <Link
               href="/contact"
-              className="label-mono hidden items-center gap-2 rounded-pill bg-ink px-5 py-3 text-cream transition-colors hover:bg-ink-soft sm:inline-flex"
+              className="label-mono hidden items-center gap-2 rounded-pill bg-primary px-5 py-3 text-primary-foreground transition-colors hover:opacity-85 sm:inline-flex"
             >
               Start a project
               <ArrowUpRight className="size-3.5" />
@@ -125,10 +125,10 @@ export function SiteHeader() {
               <SheetContent
                 side="right"
                 showCloseButton={false}
-                className="w-full border-none bg-ink p-0 text-cream sm:max-w-md"
+                className="w-full border-none bg-contrast p-0 text-on-contrast sm:max-w-md"
               >
                 <SheetTitle className="sr-only">Menu</SheetTitle>
-                <div className="flex items-center justify-between border-b border-cream/15 px-6 py-5">
+                <div className="flex items-center justify-between border-b border-on-contrast/15 px-6 py-5">
                   <Image
                     src="/images/brand/logo-white.png"
                     alt={site.name}
@@ -140,7 +140,7 @@ export function SiteHeader() {
                     type="button"
                     onClick={() => setOpen(false)}
                     aria-label="Close menu"
-                    className="inline-flex size-11 items-center justify-center rounded-pill border border-cream/25"
+                    className="inline-flex size-11 items-center justify-center rounded-pill border border-on-contrast/25"
                   >
                     <X className="size-5" />
                   </button>
@@ -151,9 +151,9 @@ export function SiteHeader() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-baseline gap-4 border-b border-cream/12 py-5 font-display text-4xl transition-colors hover:text-coral"
+                      className="flex items-baseline gap-4 border-b border-on-contrast/15 py-5 font-display text-4xl transition-colors hover:text-coral"
                     >
-                      <span className="label-mono text-cream/40">
+                      <span className="label-mono text-on-contrast/50">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       {item.label}
@@ -162,7 +162,7 @@ export function SiteHeader() {
                   <Link
                     href="/contact"
                     onClick={() => setOpen(false)}
-                    className="label-mono mt-8 inline-flex items-center justify-center gap-2 rounded-pill bg-coral px-6 py-4 text-white"
+                    className="label-mono mt-8 inline-flex items-center justify-center gap-2 rounded-pill bg-coral-deep px-6 py-4 text-white"
                   >
                     Start a project
                     <ArrowUpRight className="size-3.5" />

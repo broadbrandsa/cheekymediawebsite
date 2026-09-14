@@ -161,3 +161,45 @@ fluid vertical rhythm. Use these rather than repeating the container classes.
 **Radii are large.** `--radius` is 1rem and cards use `rounded-3xl`. Buttons and
 chips use `rounded-pill` (`100vw`), which is the dominant button shape on all
 three references.
+
+## Accessibility and responsive behaviour
+
+Audited and fixed rather than assumed. Every claim below was measured.
+
+**Contrast.** All 16 text/background pairs clear WCAG AA in both themes. The
+display coral (`--coral`) is only 3.4:1 on cream, which is fine for headings at
+24px and up but fails for small text, so there is a second token,
+`--coral-text`, at 5.57:1 on cream and 4.88:1 on sand. Use `text-coral` for
+large display italics and `text-coral-text` for labels, kickers and inline
+links. Solid coral buttons use `--coral-deep`, since white on the display coral
+is only 3.67:1.
+
+**Dark mode works.** It previously did not. shadcn ties the `dark:` variant to
+a `.dark` class, and nothing ever applied that class, so the whole dark palette
+and every `dark:` utility were dead. The custom variant now also matches
+`prefers-color-scheme: dark`, so the OS setting is honoured. There is no manual
+toggle; `[data-theme="light"]` on the root opts out if one is ever added.
+
+Because of that, avoid raw `bg-ink` / `text-cream` on anything that must invert.
+Use `bg-primary` / `text-primary-foreground` for solid buttons, and
+`bg-contrast` / `text-on-contrast` for the inverted sections, which keeps the
+light/dark section rhythm working in both themes.
+
+**Touch targets.** Every button, input and tab is at least 44px tall. Inputs are
+48px. Category chips inside a card are non-interactive labels, the card itself
+is the target.
+
+**Responsive.** Zero horizontal overflow across 90 combinations, nine pages by
+nine widths from 320px to 1920px. `overflow-x: clip` on html and body is a
+backstop, not the fix; the underlying cause was a footer nav row that would not
+wrap.
+
+**Other checks that pass across all pages:** exactly one h1 with no heading-level
+skips, every image has alt text and reserved dimensions, every form field has a
+label, every iframe has a title, no empty links, no duplicate ids, visible
+focus rings on everything focusable, and a working skip link.
+
+**Motion.** All transitions are 150 to 700ms on transform and opacity only. The
+marquee has its own `prefers-reduced-motion` rule, because the blanket
+reduced-motion reset would otherwise freeze it halfway through its travel
+rather than at its start.

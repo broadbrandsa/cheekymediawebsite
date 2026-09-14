@@ -9,7 +9,7 @@ export function FeaturedWork({ items }: { items: WorkCardItem[] }) {
       <div className="shell">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="label-mono text-coral">Selected work</p>
+            <p className="label-mono text-coral-text">Selected work</p>
             <h2 className="type-h2 mt-5 max-w-[16ch]">
               Shows, spots and stories
             </h2>

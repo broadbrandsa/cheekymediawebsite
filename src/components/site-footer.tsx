@@ -81,11 +81,11 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-ink/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="label-mono text-muted-foreground">
             &copy; {new Date().getFullYear()} {site.name}. Level 1 BBBEE.
           </p>
-          <nav className="flex gap-6">
+          <nav className="flex flex-wrap gap-x-6 gap-y-2">
             {site.nav.map((item) => (
               <Link
                 key={item.href}

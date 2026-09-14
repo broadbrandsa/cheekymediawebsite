@@ -20,14 +20,14 @@ export function Stats() {
   return (
     <section className="section-y bg-sand">
       <div className="shell">
-        <p className="label-mono text-coral">By the numbers</p>
+        <p className="label-mono text-coral-text">By the numbers</p>
         <h2 className="type-h2 mt-5 max-w-[20ch]">
           A decade of turning briefs into things people watch
         </h2>
 
         <dl className="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">
           {stats.map((s) => (
-            <div key={s.label} className="border-t border-ink/15 pt-6">
+            <div key={s.label} className="border-t border-border pt-6">
               <dt className="type-h0 font-display leading-none">{s.value}</dt>
               <dd className="mt-4">
                 <p className="label-mono">{s.label}</p>

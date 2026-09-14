@@ -52,11 +52,11 @@ export default async function ServiceDetailPage({
 
       <section className="section-y bg-sand">
         <div className="shell">
-          <h2 className="label-mono text-coral">What we offer</h2>
+          <h2 className="label-mono text-coral-text">What we offer</h2>
           <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2">
             {service.offerings.map((o, i) => (
               <div key={o.title} className="bg-card p-8 sm:p-10">
-                <span className="label-mono text-coral">
+                <span className="label-mono text-coral-text">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="type-h4 mt-5">
@@ -72,7 +72,7 @@ export default async function ServiceDetailPage({
       </section>
 
       <section className="shell max-w-3xl section-y">
-        <h2 className="label-mono text-coral">Why it works</h2>
+        <h2 className="label-mono text-coral-text">Why it works</h2>
         <p className="type-h3 mt-6">
           {service.why}
         </p>

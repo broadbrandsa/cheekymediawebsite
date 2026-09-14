@@ -20,7 +20,7 @@ export function Intro() {
   return (
     <section className="section-y">
       <div className="shell">
-        <p className="label-mono text-coral">Why Cheeky Media</p>
+        <p className="label-mono text-coral-text">Why Cheeky Media</p>
 
         <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-16">
           <h2 className="type-h2 lg:col-span-7">
@@ -52,7 +52,7 @@ export function Intro() {
         <ul className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-3">
           {pillars.map((p, i) => (
             <li key={p.title} className="bg-card p-8">
-              <span className="label-mono text-coral">
+              <span className="label-mono text-coral-text">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className="type-h4 mt-5">{p.title}</h3>
