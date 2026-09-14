@@ -76,9 +76,22 @@ direct, a bit dry, confident without being corporate. Specifically written new:
 All 185 media files were pulled from the WordPress library and 32 portfolio
 images are now in `public/images/work/`. Two things to note:
 
-- Several source images are screenshots, named things like
-  `Screenshot-2025-11-25-at-15.44.01.png`. They are low resolution and some are
-  visibly compressed. Proper stills would lift the work grid noticeably.
+- The WordPress featured images were mostly screenshots
+  (`Screenshot-2025-11-25-at-15.44.01.png` and similar), at inconsistent sizes
+  and aspect ratios. The media library also held the original video thumbnails
+  at a clean 1280x720, so **17 of the 32 work images have been swapped to
+  those**. All 32 were then re-encoded as progressive JPEG, which took the
+  folder from 22MB to 1.9MB.
+- **Eight images are still weaker than they should be.** These had no better
+  source in the library:
+  `the-morning-show` (363x647), `fnb-synctv` (365x499), `wingin-it` (485x276),
+  `hitch-or-ditch`, `out-of-office`, `cop-and-a-half`, `anyone-ask-for-an-upgrade`
+  and `the-russian-exchange` are all under 500px on their long edge, so they are
+  upscaled in the grid and look soft. Replacing these eight with proper stills
+  is the single cheapest visual improvement available.
+- `the-morning-show` and `fnb-synctv` are vertical social clips. There is no
+  landscape still for either, so the grid crops them. Proper 16:9 key art would
+  fix it.
 - At least one image (The Man Cave) carries a visible "Property of Cheeky Media"
   watermark burned in. That was on the original asset. Worth replacing with a
   clean version.
