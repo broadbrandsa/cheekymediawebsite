@@ -183,13 +183,16 @@ Promote to Production. It is instant, because the build already exists.
 Add the domain in Vercel under Settings, Domains, then point DNS at Vercel.
 Which domain to use is still open, see `ASSUMPTIONS.md`.
 
-Before the DNS change, write the redirect map from the old WordPress URLs. The
-structure changed:
+**The redirects are implemented** in `next.config.ts` and tested. Every URL the
+old WordPress site exposed lands somewhere sensible, with or without a trailing
+slash, which matters because that is how Google has them indexed.
 
 | Old | New |
 |---|---|
 | `/portfolio/<slug>/` | `/work/<slug>` |
-| `/portfolio-2/` | `/work` |
+| `/portfolio/cop-a-half/` | `/work/cop-and-a-half` (merged duplicate) |
+| `/portfolio/dungeon/` | `/work/the-dungeon` (merged duplicate) |
+| `/portfolio/`, `/portfolio-2/` | `/work` |
 | `/portfolio-category/<cat>/` | `/work` |
 | `/about-us/` | `/about` |
 | `/contact-us/` | `/contact` |
@@ -199,21 +202,8 @@ structure changed:
 | `/corporate/` | `/services/corporate` |
 | `/test/` | `/` |
 
-These go in `next.config.ts` as permanent redirects:
-
-```ts
-async redirects() {
-  return [
-    { source: "/about-us", destination: "/about", permanent: true },
-    { source: "/portfolio/:slug", destination: "/work/:slug", permanent: true },
-    // ...
-  ];
-}
-```
-
-Note that the portfolio slugs mostly carry across unchanged, but two were merged
-(`cop-a-half` into `cop-and-a-half`, and `dungeon` into `the-dungeon`), so those
-two need explicit entries.
+All are 308 permanent redirects, so search engines transfer ranking rather than
+treating the new URLs as unrelated pages.
 
 ## Post-launch checks
 
