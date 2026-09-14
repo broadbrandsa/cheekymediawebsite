@@ -1,6 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Star } from "lucide-react";
+
+import { VideoPlayer } from "@/components/video-player";
+import { site } from "@/content/site";
 
 export function Hero() {
   return (
@@ -39,22 +41,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Full-bleed showreel still, with a floating quote card over it. */}
+      {/* Full-bleed showreel, with a floating quote card overlapping it. */}
       <div className="relative">
-        <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[21/9]">
-          <Image
-            src="/images/work/barcelo.jpg"
-            alt="Cheeky Media on set"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent"
-          />
-        </div>
+        <VideoPlayer
+          videoId={site.showreelId}
+          poster="/images/work/barcelo.jpg"
+          title="Cheeky Media showreel"
+          className="rounded-none sm:aspect-[21/9]"
+        />
 
         <div className="shell relative">
           <figure className="-mt-16 ml-auto max-w-sm rounded-3xl border border-border bg-card p-6 shadow-xl shadow-ink/10 sm:-mt-24">
@@ -76,6 +70,7 @@ export function Hero() {
           </figure>
         </div>
       </div>
+
     </section>
   );
 }

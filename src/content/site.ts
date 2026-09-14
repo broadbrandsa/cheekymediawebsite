@@ -6,6 +6,9 @@ export const site = {
     "Cheeky Media is a Johannesburg content production company. We make TV, film, commercials and digital work for brands and broadcasters across Africa.",
   url: "https://cheekymediaworld.com",
   founded: 2014,
+  /** Cheeky Media showreel, from the About page of the old site. */
+  showreelId: "sDi4WLVuzfU",
+  youtube: "https://www.youtube.com/@CheekyMedia",
   contact: {
     phone: "011 258 4465",
     phoneHref: "tel:+27112584465",

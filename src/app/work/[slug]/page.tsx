@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { Cta } from "@/components/sections/cta";
+import { VideoPlayer } from "@/components/video-player";
 import { WorkCard } from "@/components/work-card";
 import { work, workBySlug } from "@/content/work";
 import { toCardItem } from "@/lib/content";
@@ -47,6 +48,13 @@ export default async function WorkDetailPage({
       urlFor(cms.coverImage)?.width(1800).height(1000).fit("crop").url()) ??
     stat!.image;
   const body = stat?.body ?? [];
+  // The CMS stores a full URL; the migrated catalogue stores the bare id.
+  const cmsVideoId = cms?.videoUrl?.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/,
+  )?.[1];
+  const videoId = cmsVideoId ?? stat?.videoId;
+  const videoFile = stat?.videoFile;
+  const hasVideo = Boolean(videoId || videoFile);
 
   const related = work
     .filter(
@@ -96,22 +104,43 @@ export default async function WorkDetailPage({
         </div>
 
         <div className="shell max-w-6xl">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-secondary">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              priority
-              sizes="(max-width: 1152px) 100vw, 1152px"
-              className="object-cover"
+          {hasVideo ? (
+            <VideoPlayer
+              videoId={videoId}
+              videoFile={videoFile}
+              poster={image}
+              title={title}
             />
-          </div>
+          ) : (
+            <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-secondary">
+              <Image
+                src={image}
+                alt={title}
+                fill
+                priority
+                sizes="(max-width: 1152px) 100vw, 1152px"
+                className="object-cover"
+              />
+            </div>
+          )}
         </div>
 
         <div className="shell max-w-3xl py-16 sm:py-20">
           <p className="type-h3">
             {summary}
           </p>
+          {videoId && (
+            <a
+              href={`https://www.youtube.com/watch?v=${videoId}`}
+              target="_blank"
+              rel="noreferrer"
+              className="label-mono mt-8 inline-flex items-center gap-2 rounded-pill border border-border px-5 py-3 transition-colors hover:bg-secondary"
+            >
+              Watch on YouTube
+              <ArrowUpRight className="size-3.5" />
+            </a>
+          )}
+
           {body.length > 0 && (
             <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
               {body.map((para, i) => (

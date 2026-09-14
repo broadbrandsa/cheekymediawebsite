@@ -98,6 +98,51 @@ images are now in `public/images/work/`. Two things to note:
 - No image rights were verified. Assumed Cheeky Media owns or has cleared
   everything in its own media library.
 
+## Video
+
+The old site embedded YouTube videos through Elementor widget settings, where
+the URLs sit double-encoded inside a `data-settings` attribute rather than in
+the `_vp_format_video_url` meta field the theme provides. That meta field is
+empty on all 34 items, which is why a first pass over the REST API finds no
+video at all. They were recovered by decoding the widget settings.
+
+**24 of the 32 work items now carry video.** Every id was verified live through
+the YouTube oEmbed endpoint, and all of them sit on the
+[Cheeky Media channel](https://www.youtube.com/@CheekyMedia).
+
+Two further videos were found outside the portfolio:
+
+- **The Cheeky Media showreel** (`sDi4WLVuzfU`) was embedded on the old About
+  page and nowhere else. It now plays from the homepage hero.
+- **A shorter Barceló cut** (`JeZjbVir19k`) was on the old Corporate page. Not
+  used, since the full version is already on the Barceló work page.
+
+### Items with no video, and why
+
+| Item | Reason |
+|---|---|
+| Aesthetic Empire, Anyone ask for an upgrade?, Wingin' it, Hitch or Ditch, Out of Office, The Russian Exchange | No video on the old site either. These are the six items that carry full written treatments instead. |
+| China Diaries Promo | **The old site links the wrong video.** It points at `hHgnC5IgJpI`, which is the Biting About promo, already used by that item. Left empty rather than repeating the error. |
+| SyncTV Competitions June 2024 | **The old site links the wrong video.** It points at `VvESSgZqwgA`, which is Revelations Promo Online, already used by that item. Left empty rather than repeating the error. |
+
+Those last two need the correct YouTube ids from whoever manages the channel.
+
+### How video is handled
+
+Playback uses a click-to-load facade in `src/components/video-player.tsx`. The
+poster is our own still, and the YouTube iframe is only created when someone
+presses play, so roughly a megabyte of third-party script never loads for the
+majority of visitors who do not. Embeds use `youtube-nocookie.com`.
+
+The Man Cave has no YouTube upload but does have a self-hosted intro, which was
+on the old site as `TMC-S7-INTRO_1.mp4`. It plays through the same component as
+a native `<video>`. **It is 16MB and uncompressed.** That is heavy for a South
+African mobile connection and should either be re-encoded or, better, uploaded
+to the channel so it matches everything else.
+
+New work added through the CMS takes a full YouTube URL in the `videoUrl`
+field; the id is parsed out of it at render time.
+
 ## Things deliberately not carried over
 
 - The Slider Revolution hero video. The source `TMC-S7-INTRO_1.mp4` was

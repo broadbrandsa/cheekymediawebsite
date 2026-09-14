@@ -15,6 +15,10 @@ export type WorkItem = {
   body?: string[];
   year?: number;
   client?: string;
+  /** YouTube video id, from the Cheeky Media channel. */
+  videoId?: string;
+  /** Self-hosted clip in /public, used where there is no YouTube upload. */
+  videoFile?: string;
 };
 
 export const workCategories: WorkCategory[] = [
@@ -32,6 +36,7 @@ export const work: WorkItem[] = [
     kicker: "You know the drill, Sergeant.",
     categories: ["TV", "Film"],
     image: "/images/work/the-man-cave.jpg",
+    videoFile: "/images/video/the-man-cave-intro.mp4",
     summary:
       "Eight seasons of cars, kit, challenges and banter. The toys that make grown men wish they had a lot more disposable everything.",
     body: [
@@ -45,6 +50,7 @@ export const work: WorkItem[] = [
     kicker: "SA's wildest action comedy",
     categories: ["Film", "TV"],
     image: "/images/work/cop-and-a-half.jpg",
+    videoId: "kSm5YA3vxeQ",
     summary:
       "A by-the-book cop, a smooth-talking informant, and the Johannesburg underworld between them.",
     body: [
@@ -136,6 +142,7 @@ export const work: WorkItem[] = [
     kicker: "Dare to be 1% better",
     categories: ["TV", "Digital"],
     image: "/images/work/the-dungeon.jpg",
+    videoId: "LlDZLP749Ew",
     summary:
       "A transformation format about getting out of the grind and becoming the person you meant to be.",
     body: [
@@ -148,6 +155,7 @@ export const work: WorkItem[] = [
     title: "The Morning Show",
     categories: ["TV", "Digital"],
     image: "/images/work/the-morning-show.jpg",
+    videoId: "ezojdXvcSSI",
     client: "ETV",
     summary:
       "A live weekday show on ETV, produced by us. The daily discipline that keeps the rest of the slate sharp.",
@@ -160,6 +168,7 @@ export const work: WorkItem[] = [
     title: "Tongue in Cheek",
     categories: ["TV"],
     image: "/images/work/tongue-in-cheek.jpg",
+    videoId: "rv_yJnqpKPo",
     summary: "Studio-based entertainment, produced in house.",
   },
   {
@@ -167,6 +176,7 @@ export const work: WorkItem[] = [
     title: "TMS",
     categories: ["TV"],
     image: "/images/work/tms.jpg",
+    videoId: "VF_OnT9mWwE",
     summary: "Series production for broadcast.",
   },
   {
@@ -174,6 +184,7 @@ export const work: WorkItem[] = [
     title: "She's the One",
     categories: ["TV"],
     image: "/images/work/shes-the-one.jpg",
+    videoId: "vgm0chFmDKM",
     summary: "Entertainment format built around one woman and a lot of choices.",
   },
   {
@@ -181,6 +192,7 @@ export const work: WorkItem[] = [
     title: "Real Talk",
     categories: ["TV"],
     image: "/images/work/real-talk.jpg",
+    videoId: "pU21x_oxhwM",
     summary: "Conversation-led television, shot in our studios.",
   },
   {
@@ -188,6 +200,7 @@ export const work: WorkItem[] = [
     title: "Ovakandr",
     categories: ["TV"],
     image: "/images/work/ovakandr.jpg",
+    videoId: "belwo1dNQn0",
     summary: "Series production for broadcast.",
   },
   {
@@ -195,6 +208,7 @@ export const work: WorkItem[] = [
     title: "On the Fly",
     categories: ["TV"],
     image: "/images/work/on-the-fly-promo.jpg",
+    videoId: "Joz1hD_0exg",
     summary: "Promo package cut for broadcast.",
   },
   {
@@ -202,6 +216,7 @@ export const work: WorkItem[] = [
     title: "MTV VJ Search",
     categories: ["TV"],
     image: "/images/work/mtv-vj-search.jpg",
+    videoId: "kUct9Nol5k0",
     client: "MTV",
     summary: "Talent search format produced for MTV.",
   },
@@ -210,6 +225,7 @@ export const work: WorkItem[] = [
     title: "Cooking with the Fakirs",
     categories: ["TV"],
     image: "/images/work/cooking-with-the-fakirs.jpg",
+    videoId: "Rg8ZqIdD9Yw",
     summary: "A food series with a family at the centre of it.",
   },
   {
@@ -224,6 +240,7 @@ export const work: WorkItem[] = [
     title: "Biting About",
     categories: ["TV"],
     image: "/images/work/biting-about.jpg",
+    videoId: "hHgnC5IgJpI",
     summary: "Food and culture series promo.",
   },
   {
@@ -231,6 +248,7 @@ export const work: WorkItem[] = [
     title: "Art Meet Science",
     categories: ["Digital"],
     image: "/images/work/art-meet-science.jpg",
+    videoId: "LiBL79u1rRk",
     client: "Dr. Reza Mia",
     summary: "Digital content series bridging aesthetics and medicine.",
   },
@@ -239,6 +257,7 @@ export const work: WorkItem[] = [
     title: "Dimpie The Movie",
     categories: ["Film"],
     image: "/images/work/dimpie-the-movie.jpg",
+    videoId: "G2DBEzCVMxw",
     summary: "Feature film production.",
   },
   {
@@ -246,6 +265,7 @@ export const work: WorkItem[] = [
     title: "Revelations",
     categories: ["Corporate", "Film"],
     image: "/images/work/revelations-pilot-for-vodacom.jpg",
+    videoId: "7k2ufAtfS5Q",
     client: "Vodacom",
     summary: "Pilot produced for Vodacom, with an online promo cut alongside it.",
   },
@@ -254,6 +274,7 @@ export const work: WorkItem[] = [
     title: "Revelations Promo",
     categories: ["Film"],
     image: "/images/work/revelations-promo-online.jpg",
+    videoId: "VvESSgZqwgA",
     client: "Vodacom",
     summary: "Online promo for the Revelations pilot.",
   },
@@ -262,6 +283,7 @@ export const work: WorkItem[] = [
     title: "XTV to SyncTV",
     categories: ["Film", "Corporate"],
     image: "/images/work/synctv-montage-from-xtv-to-synctv.jpg",
+    videoId: "xpoW4rapdms",
     client: "SyncTV",
     summary: "A rebrand montage tracking the move from XTV to SyncTV.",
   },
@@ -279,6 +301,7 @@ export const work: WorkItem[] = [
     title: "FNB on SyncTV",
     categories: ["Corporate", "Digital"],
     image: "/images/work/fnb-synctv.jpg",
+    videoId: "Bk0PIIKF5n0",
     client: "FNB",
     summary: "Brand integration work for FNB across the SyncTV platform.",
   },
@@ -287,6 +310,7 @@ export const work: WorkItem[] = [
     title: "Socrati",
     categories: ["Commercials"],
     image: "/images/work/socrati.jpg",
+    videoId: "_0YYLpKcFmg",
     summary: "Commercial production, concept through to delivery.",
   },
   {
@@ -294,6 +318,7 @@ export const work: WorkItem[] = [
     title: "African Bank",
     categories: ["Commercials", "Digital"],
     image: "/images/work/african-bank.jpg",
+    videoId: "W0UGT3aCL4M",
     client: "African Bank",
     summary:
       "Commercial campaign with six second cutdowns built for digital placement.",
@@ -303,6 +328,7 @@ export const work: WorkItem[] = [
     title: "Sauceland",
     categories: ["Corporate"],
     image: "/images/work/sauceland.jpg",
+    videoId: "fjCctdLuftc",
     summary: "Corporate brand film.",
   },
   {
@@ -310,6 +336,7 @@ export const work: WorkItem[] = [
     title: "MTN Montage",
     categories: ["Digital", "Corporate"],
     image: "/images/work/mtn-montage.jpg",
+    videoId: "6qzDoQLCC8M",
     client: "MTN",
     summary: "Montage cut from MTN campaign work.",
   },
@@ -318,6 +345,7 @@ export const work: WorkItem[] = [
     title: "Barceló",
     categories: ["Corporate"],
     image: "/images/work/barcelo.jpg",
+    videoId: "VnoRH4QqLcw",
     client: "Barceló",
     summary: "Corporate video with a short-form version for social.",
   },
