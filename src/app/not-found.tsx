@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+
 
 export default function NotFound() {
   return (
-    <section className="mx-auto flex min-h-[60vh] max-w-3xl flex-col justify-center px-5 py-24 sm:px-8">
-      <p className="eyebrow text-coral">404</p>
-      <h1 className="display-lg mt-6 font-display font-extrabold">
+    <section className="shell flex min-h-[60vh] max-w-3xl flex-col justify-center py-24">
+      <p className="label-mono text-coral">404</p>
+      <h1 className="type-h1 mt-6">
         That page has left the building.
       </h1>
       <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
@@ -14,12 +14,18 @@ export default function NotFound() {
         there is plenty of it.
       </p>
       <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-        <Button asChild size="lg">
-          <Link href="/work">See the work</Link>
-        </Button>
-        <Button asChild size="lg" variant="outline">
-          <Link href="/">Back home</Link>
-        </Button>
+        <Link
+          href="/work"
+          className="label-mono inline-flex items-center justify-center rounded-pill bg-ink px-7 py-4 text-cream transition-colors hover:bg-ink-soft"
+        >
+          See the work
+        </Link>
+        <Link
+          href="/"
+          className="label-mono inline-flex items-center justify-center rounded-pill border border-border px-7 py-4 transition-colors hover:bg-secondary"
+        >
+          Back home
+        </Link>
       </div>
     </section>
   );

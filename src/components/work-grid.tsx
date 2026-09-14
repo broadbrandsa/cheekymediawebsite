@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 
 import { WorkCard, type WorkCardItem } from "@/components/work-card";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const PAGE_SIZE = 9;
@@ -53,10 +52,10 @@ export function WorkGrid({
               aria-selected={isActive}
               onClick={() => pick(cat)}
               className={cn(
-                "rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors",
+                "label-mono rounded-pill border px-5 py-3 transition-colors",
                 isActive
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-transparent text-muted-foreground hover:border-primary/40 hover:text-foreground",
+                  ? "border-ink bg-ink text-cream"
+                  : "border-border text-muted-foreground hover:border-ink/40 hover:text-foreground",
               )}
             >
               {cat}
@@ -70,7 +69,7 @@ export function WorkGrid({
           Nothing here yet in this category.
         </p>
       ) : (
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((item, i) => (
             <WorkCard key={item.slug} item={item} priority={i < 3} />
           ))}
@@ -79,13 +78,13 @@ export function WorkGrid({
 
       {hasMore && (
         <div className="mt-12 flex justify-center">
-          <Button
-            variant="outline"
-            size="lg"
+          <button
+            type="button"
             onClick={() => setVisible((v) => v + PAGE_SIZE)}
+            className="label-mono rounded-pill border border-border px-7 py-4 transition-colors hover:bg-secondary"
           >
             Load more
-          </Button>
+          </button>
         </div>
       )}
     </div>

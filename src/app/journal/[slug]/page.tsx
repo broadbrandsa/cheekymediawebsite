@@ -49,7 +49,7 @@ const components: PortableTextComponents = {
             alt={value.alt ?? ""}
             width={1400}
             height={900}
-            className="w-full rounded-xl"
+            className="w-full rounded-3xl"
           />
           {value.alt && (
             <figcaption className="mt-3 text-center text-sm text-muted-foreground">
@@ -62,17 +62,17 @@ const components: PortableTextComponents = {
   },
   block: {
     h2: ({ children }) => (
-      <h2 className="mt-12 font-display text-2xl font-bold tracking-tight sm:text-3xl">
+      <h2 className="type-h3 mt-12">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mt-10 font-display text-xl font-bold tracking-tight">
+      <h3 className="type-h4 mt-10">
         {children}
       </h3>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-8 border-l-4 border-coral pl-6 font-display text-xl italic">
+      <blockquote className="my-8 border-l-2 border-coral pl-6 font-display text-2xl italic">
         {children}
       </blockquote>
     ),
@@ -121,7 +121,7 @@ export default async function JournalPostPage({
 
   return (
     <>
-      <article className="mx-auto max-w-3xl px-5 pb-20 pt-28 sm:px-8 sm:pt-36">
+      <article className="shell max-w-3xl pb-20 pt-16 sm:pt-24">
         <Link
           href="/journal"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-coral"
@@ -132,7 +132,7 @@ export default async function JournalPostPage({
 
         <time
           dateTime={post.publishedAt}
-          className="mt-8 block text-xs uppercase tracking-wider text-muted-foreground"
+          className="label-mono mt-8 block text-muted-foreground"
         >
           {new Date(post.publishedAt).toLocaleDateString("en-ZA", {
             day: "numeric",
@@ -141,7 +141,7 @@ export default async function JournalPostPage({
           })}
         </time>
 
-        <h1 className="display-lg mt-4 font-display font-extrabold">
+        <h1 className="type-h1 mt-4">
           {post.title}
         </h1>
 
@@ -152,7 +152,7 @@ export default async function JournalPostPage({
         )}
 
         {cover && (
-          <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-xl bg-muted">
+          <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-3xl bg-secondary">
             <Image
               src={cover}
               alt={post.coverImage?.alt ?? post.title}

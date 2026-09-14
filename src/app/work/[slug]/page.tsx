@@ -58,7 +58,7 @@ export default async function WorkDetailPage({
   return (
     <>
       <article>
-        <div className="mx-auto max-w-5xl px-5 pb-12 pt-28 sm:px-8 sm:pt-36">
+        <div className="shell max-w-5xl pb-12 pt-16 sm:pt-24">
           <Link
             href="/work"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-coral"
@@ -71,7 +71,7 @@ export default async function WorkDetailPage({
             {categories.map((c) => (
               <span
                 key={c}
-                className="rounded-full bg-secondary px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-secondary-foreground"
+                className="label-mono rounded-pill border border-border px-4 py-2"
               >
                 {c}
               </span>
@@ -79,24 +79,24 @@ export default async function WorkDetailPage({
           </div>
 
           {kicker && (
-            <p className="mt-6 font-display text-lg italic text-coral">
+            <p className="mt-6 font-display text-2xl italic text-coral">
               {kicker}
             </p>
           )}
 
-          <h1 className="display-lg mt-3 font-display font-extrabold">
+          <h1 className="type-h1 mt-3">
             {title}
           </h1>
 
           {client && (
-            <p className="mt-4 text-sm uppercase tracking-wider text-muted-foreground">
+            <p className="label-mono mt-5 text-muted-foreground">
               Client: {client}
             </p>
           )}
         </div>
 
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-muted">
+        <div className="shell max-w-6xl">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-secondary">
             <Image
               src={image}
               alt={title}
@@ -108,8 +108,8 @@ export default async function WorkDetailPage({
           </div>
         </div>
 
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
-          <p className="font-display text-xl leading-relaxed text-foreground sm:text-2xl">
+        <div className="shell max-w-3xl py-16 sm:py-20">
+          <p className="type-h3">
             {summary}
           </p>
           {body.length > 0 && (
@@ -123,12 +123,10 @@ export default async function WorkDetailPage({
       </article>
 
       {related.length > 0 && (
-        <section className="border-t border-border bg-secondary/50 py-20">
-          <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <h2 className="font-display text-2xl font-bold tracking-tight">
-              More like this
-            </h2>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="border-t border-border py-20">
+          <div className="shell">
+            <h2 className="type-h3">More like this</h2>
+            <div className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((item) => (
                 <WorkCard key={item.slug} item={item} />
               ))}

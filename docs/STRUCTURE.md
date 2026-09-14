@@ -122,19 +122,42 @@ build passes on a fresh clone with no credentials.
 
 ## Theme and brand
 
-Brand colours are sampled from the logo. The navy is `#123A62` exactly. All
-colours are defined as oklch custom properties in `globals.css` and exposed to
-Tailwind through `@theme inline`, so `bg-navy-800`, `text-coral` and
-`bg-cream` work as utilities.
+The visual language follows three Webflow references supplied as direction:
+[SaleUnion](https://saleunion.webflow.io/), [Bungee](https://bungee-pro.webflow.io/)
+and [Franco](https://franco-template.webflow.io/homepage/home-b). All three share
+the same system, and the site now matches it.
 
-Light and dark are both defined. The site does not currently ship a theme
-toggle, but the dark palette is complete, so adding one is a small change.
+**Three-part type system**, the signature move across all three references:
 
-Three custom utilities carry the visual identity:
+| Role | Face | Used for |
+|---|---|---|
+| Display | Instrument Serif | Every heading, at 400 weight with tight negative tracking |
+| Body | Inter | Paragraphs and UI |
+| Mono | DM Mono | Uppercase micro-labels, eyebrows, buttons, metadata |
 
-- `.display-xl` and `.display-lg` for the oversized headlines
-- `.eyebrow` for the small uppercase labels above headings
-- `.rule-coral` for the short coral rule under a label
+**Palette.** Warm cream ground rather than white, deep navy-black ink rather
+than pure black, coral as the single accent. The navy is still derived from the
+Cheeky Media logo (`#123A62`), warmed so it sits with the cream.
 
-Typography is Archivo for display and Inter for body, both loaded through
-`next/font` so there is no layout shift and no request to Google at runtime.
+| Token | Light | Role |
+|---|---|---|
+| `--cream` | `#F9F6EF` | Page background |
+| `--sand` | `#EDE7DA` | Alternate section background |
+| `--ink` | `#111E2E` | Text, dark sections |
+| `--coral` | `#E4573D` | Accent, italics, rules, one CTA |
+
+All are exposed as Tailwind utilities (`bg-cream`, `text-ink`, `text-coral`).
+Light and dark are both complete.
+
+**Type scale utilities** replace ad-hoc `text-*` sizes on headings:
+`.type-h0` through `.type-h4`, each fluid via `clamp()` with the negative
+tracking the references use. `.label-mono` is the uppercase mono micro-label
+and `.label-pill` wraps it in the bordered pill seen on the reference heroes.
+
+**Layout utilities.** `.shell` is the 81rem container with responsive gutters,
+matching SaleUnion's `--_sizes---container--max-width`. `.section-y` is the
+fluid vertical rhythm. Use these rather than repeating the container classes.
+
+**Radii are large.** `--radius` is 1rem and cards use `rounded-3xl`. Buttons and
+chips use `rounded-pill` (`100vw`), which is the dominant button shape on all
+three references.

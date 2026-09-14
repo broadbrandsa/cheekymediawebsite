@@ -5,16 +5,21 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-navy-900: var(--navy-900);
-  --color-navy-800: var(--navy-800);
-  --color-navy-700: var(--navy-700);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-navy: var(--navy);
   --color-navy-600: var(--navy-600);
   --color-coral: var(--coral);
-  --color-coral-dark: var(--coral-dark);
+  --color-coral-deep: var(--coral-deep);
   --color-cream: var(--cream);
   --color-sand: var(--sand);
-  --color-ink: var(--ink);
+  --color-sand-deep: var(--sand-deep);
+  --color-stone: var(--stone);
+  --color-line: var(--line);
+  --color-line-dark: var(--line-dark);
   --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --radius-pill: 100vw;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -59,93 +64,101 @@
 }
 
 :root {
-  /* Brand palette, sampled from the Cheeky Media logo (#123A62). */
-  --navy-900: oklch(0.2572 0.0616 252.80);
-  --navy-800: oklch(0.3431 0.0830 251.61);
-  --navy-700: oklch(0.4167 0.0994 251.17);
+  /* Palette: warm cream ground, deep navy-black ink, coral accent.
+     Derived from the Cheeky Media logo navy (#123A62), warmed to sit with
+     the editorial cream used across the reference sites. */
+  --ink: oklch(0.2316 0.0362 254.23);
+  --ink-soft: oklch(0.2883 0.0433 253.21);
+  --navy: oklch(0.3431 0.0830 251.61);
   --navy-600: oklch(0.5148 0.1131 248.83);
-  --coral: oklch(0.6518 0.1978 30.88);
-  --coral-dark: oklch(0.5819 0.1882 31.19);
-  --cream: oklch(0.9828 0.0045 78.30);
-  --sand: oklch(0.9448 0.0120 79.78);
-  --ink: oklch(0.2177 0.0356 251.29);
+  --cream: oklch(0.9735 0.0098 87.47);
+  --sand: oklch(0.9291 0.0185 86.15);
+  --sand-deep: oklch(0.8904 0.0232 84.59);
+  --coral: oklch(0.6387 0.1806 32.54);
+  --coral-deep: oklch(0.5667 0.1742 32.18);
+  --stone: oklch(0.6184 0.0146 82.39);
+  --line: oklch(0.8622 0.0218 85.95);
+  --line-dark: oklch(0.3574 0.0420 251.62);
 
-  --background: oklch(0.9828 0.0045 78.30);
-  --foreground: oklch(0.2177 0.0356 251.29);
+  --background: var(--cream);
+  --foreground: var(--ink);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2177 0.0356 251.29);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2177 0.0356 251.29);
-  --primary: oklch(0.3431 0.0830 251.61);
-  --primary-foreground: oklch(0.9828 0.0045 78.30);
-  --secondary: oklch(0.9448 0.0120 79.78);
-  --secondary-foreground: oklch(0.3431 0.0830 251.61);
-  --muted: oklch(0.9448 0.0120 79.78);
-  --muted-foreground: oklch(0.4900 0.0250 251.00);
-  --accent: oklch(0.6518 0.1978 30.88);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--cream);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--ink);
+  --muted: var(--sand);
+  --muted-foreground: oklch(0.4900 0.0180 250.00);
+  --accent: var(--coral);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.8900 0.0120 250.00);
-  --input: oklch(0.8900 0.0120 250.00);
-  --ring: oklch(0.5148 0.1131 248.83);
-  --chart-1: oklch(0.3431 0.0830 251.61);
-  --chart-2: oklch(0.5148 0.1131 248.83);
-  --chart-3: oklch(0.6518 0.1978 30.88);
-  --chart-4: oklch(0.4167 0.0994 251.17);
-  --chart-5: oklch(0.7200 0.1000 60.00);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.9828 0.0045 78.30);
-  --sidebar-foreground: oklch(0.2177 0.0356 251.29);
-  --sidebar-primary: oklch(0.3431 0.0830 251.61);
-  --sidebar-primary-foreground: oklch(0.9828 0.0045 78.30);
-  --sidebar-accent: oklch(0.9448 0.0120 79.78);
-  --sidebar-accent-foreground: oklch(0.3431 0.0830 251.61);
-  --sidebar-border: oklch(0.8900 0.0120 250.00);
-  --sidebar-ring: oklch(0.5148 0.1131 248.83);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--navy-600);
+  --chart-1: var(--navy);
+  --chart-2: var(--navy-600);
+  --chart-3: var(--coral);
+  --chart-4: var(--stone);
+  --chart-5: var(--sand-deep);
+  --radius: 1rem;
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--ink);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--sand);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--navy-600);
 }
 
 .dark {
-  --navy-900: oklch(0.2572 0.0616 252.80);
-  --navy-800: oklch(0.3431 0.0830 251.61);
-  --navy-700: oklch(0.4167 0.0994 251.17);
-  --navy-600: oklch(0.5148 0.1131 248.83);
-  --coral: oklch(0.7000 0.1900 32.00);
-  --coral-dark: oklch(0.6518 0.1978 30.88);
-  --cream: oklch(0.9828 0.0045 78.30);
-  --sand: oklch(0.9448 0.0120 79.78);
-  --ink: oklch(0.1600 0.0280 251.00);
+  --ink: oklch(0.1700 0.0300 253.00);
+  --ink-soft: oklch(0.2300 0.0360 253.00);
+  --navy: oklch(0.4167 0.0994 251.17);
+  --navy-600: oklch(0.6000 0.1100 248.00);
+  --cream: oklch(0.9600 0.0080 87.00);
+  --sand: oklch(0.2600 0.0330 252.00);
+  --sand-deep: oklch(0.3100 0.0380 252.00);
+  --coral: oklch(0.6900 0.1750 33.00);
+  --coral-deep: oklch(0.6387 0.1806 32.54);
+  --stone: oklch(0.6600 0.0170 84.00);
+  --line: oklch(1 0 0 / 14%);
+  --line-dark: oklch(1 0 0 / 14%);
 
-  --background: oklch(0.1600 0.0280 251.00);
-  --foreground: oklch(0.9600 0.0060 78.00);
-  --card: oklch(0.2100 0.0340 251.30);
-  --card-foreground: oklch(0.9600 0.0060 78.00);
-  --popover: oklch(0.2100 0.0340 251.30);
-  --popover-foreground: oklch(0.9600 0.0060 78.00);
-  --primary: oklch(0.9600 0.0060 78.00);
-  --primary-foreground: oklch(0.2177 0.0356 251.29);
-  --secondary: oklch(0.2700 0.0400 251.00);
-  --secondary-foreground: oklch(0.9600 0.0060 78.00);
-  --muted: oklch(0.2700 0.0400 251.00);
-  --muted-foreground: oklch(0.7100 0.0260 251.00);
-  --accent: oklch(0.7000 0.1900 32.00);
-  --accent-foreground: oklch(0.1600 0.0280 251.00);
+  --background: oklch(0.1700 0.0300 253.00);
+  --foreground: oklch(0.9600 0.0080 87.00);
+  --card: oklch(0.2200 0.0345 253.00);
+  --card-foreground: oklch(0.9600 0.0080 87.00);
+  --popover: oklch(0.2200 0.0345 253.00);
+  --popover-foreground: oklch(0.9600 0.0080 87.00);
+  --primary: oklch(0.9600 0.0080 87.00);
+  --primary-foreground: oklch(0.1700 0.0300 253.00);
+  --secondary: oklch(0.2600 0.0330 252.00);
+  --secondary-foreground: oklch(0.9600 0.0080 87.00);
+  --muted: oklch(0.2600 0.0330 252.00);
+  --muted-foreground: oklch(0.7400 0.0200 250.00);
+  --accent: oklch(0.6900 0.1750 33.00);
+  --accent-foreground: oklch(0.1700 0.0300 253.00);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.5900 0.1200 248.00);
-  --chart-1: oklch(0.7000 0.1900 32.00);
-  --chart-2: oklch(0.5900 0.1200 248.00);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.6000 0.1100 248.00);
+  --chart-1: oklch(0.6900 0.1750 33.00);
+  --chart-2: oklch(0.6000 0.1100 248.00);
   --chart-3: oklch(0.7600 0.0900 250.00);
-  --chart-4: oklch(0.8200 0.1000 60.00);
-  --chart-5: oklch(0.5148 0.1131 248.83);
-  --sidebar: oklch(0.1600 0.0280 251.00);
-  --sidebar-foreground: oklch(0.9600 0.0060 78.00);
-  --sidebar-primary: oklch(0.7000 0.1900 32.00);
-  --sidebar-primary-foreground: oklch(0.1600 0.0280 251.00);
-  --sidebar-accent: oklch(0.2700 0.0400 251.00);
-  --sidebar-accent-foreground: oklch(0.9600 0.0060 78.00);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.5900 0.1200 248.00);
+  --chart-4: oklch(0.6600 0.0170 84.00);
+  --chart-5: oklch(0.4167 0.0994 251.17);
+  --sidebar: oklch(0.1700 0.0300 253.00);
+  --sidebar-foreground: oklch(0.9600 0.0080 87.00);
+  --sidebar-primary: oklch(0.6900 0.1750 33.00);
+  --sidebar-primary-foreground: oklch(0.1700 0.0300 253.00);
+  --sidebar-accent: oklch(0.2600 0.0330 252.00);
+  --sidebar-accent-foreground: oklch(0.9600 0.0080 87.00);
+  --sidebar-border: oklch(1 0 0 / 14%);
+  --sidebar-ring: oklch(0.6000 0.1100 248.00);
 }
 
 @layer base {
@@ -164,44 +177,78 @@
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
   }
-  h1, h2, h3, h4 {
-    font-family: var(--font-display), var(--font-sans), sans-serif;
-    letter-spacing: -0.025em;
+  body {
+    font-feature-settings: "cv11", "ss01";
+  }
+  /* Serif display, tight tracking. The signature of the reference sites. */
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 400;
     text-wrap: balance;
   }
   p { text-wrap: pretty; }
-  ::selection {
-    background: var(--coral);
-    color: white;
-  }
+  ::selection { background: var(--coral); color: white; }
 }
 
 @layer utilities {
-  /* Oversized editorial headline used on the hero and section openers. */
-  .display-xl {
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    line-height: 0.95;
+  /* Type scale, mirroring the reference templates.
+     h0 112px / h1 88px / h2 56px / h3 40px, all with negative tracking. */
+  .type-h0 {
+    font-size: clamp(3.25rem, 9vw, 7rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+  }
+  .type-h1 {
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    line-height: 0.98;
     letter-spacing: -0.035em;
   }
-  .display-lg {
-    font-size: clamp(2rem, 5vw, 3.75rem);
-    line-height: 1.02;
+  .type-h2 {
+    font-size: clamp(2.125rem, 4.5vw, 3.5rem);
+    line-height: 1.05;
     letter-spacing: -0.03em;
   }
-  .eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
+  .type-h3 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+  .type-h4 {
+    font-size: clamp(1.375rem, 2vw, 2rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* Uppercase mono micro-label. Used as a section eyebrow throughout. */
+  .label-mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 500;
   }
-  .rule-coral::after {
-    content: "";
-    display: block;
-    width: 3rem;
-    height: 3px;
-    margin-top: 1rem;
-    background: var(--coral);
+
+  /* The bordered pill that wraps an eyebrow on the reference heroes. */
+  .label-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 100vw;
+    padding: 0.4rem 0.9rem;
   }
+
+  .shell {
+    margin-inline: auto;
+    max-width: 81rem;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) { .shell { padding-inline: 2rem; } }
+
+  .section-y { padding-block: clamp(4rem, 9vw, 8rem); }
+
+  /* Edge-to-edge hairlines that frame the header and section rows. */
+  .rule-y { border-block: 1px solid var(--border); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -212,3 +259,13 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee {
+  animation: marquee-scroll 45s linear infinite;
+}
+.marquee:hover { animation-play-state: paused; }

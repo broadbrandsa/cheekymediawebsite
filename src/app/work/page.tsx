@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { PageHeader } from "@/components/page-header";
 import { Cta } from "@/components/sections/cta";
 import { WorkGrid } from "@/components/work-grid";
 import { workCategories } from "@/content/work";
@@ -16,22 +17,18 @@ export default async function WorkPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-5 pb-16 pt-28 sm:px-8 sm:pt-36">
-        <p className="eyebrow text-coral">Our work</p>
-        <h1 className="display-xl mt-6 max-w-4xl font-display font-extrabold">
-          Ten years of it.
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Shows, spots, films and campaigns made for broadcasters and brands
-          across South Africa and the continent. Filter by what you are looking
-          for, or just scroll.
-        </p>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
+      <PageHeader
+        eyebrow="Our work"
+        title={
+          <>
+            Ten years <em className="font-display italic text-coral">of it</em>
+          </>
+        }
+        lede="Shows, spots, films and campaigns made for broadcasters and brands across South Africa and the continent. Filter by what you are looking for, or just scroll."
+      />
+      <section className="shell pb-24">
         <WorkGrid items={items} categories={[...workCategories]} />
       </section>
-
       <Cta />
     </>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, Inter } from "next/font/google";
+import { DM_Mono, Instrument_Serif, Inter } from "next/font/google";
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -12,10 +12,20 @@ const inter = Inter({
   display: "swap",
 });
 
-const archivo = Archivo({
+// Serif display + mono micro-labels + neutral sans body. The same three-part
+// system used across the reference templates.
+const instrumentSerif = Instrument_Serif({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -46,7 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-ZA"
-      className={`${inter.variable} ${archivo.variable} h-full`}
+      className={`${inter.variable} ${instrumentSerif.variable} ${dmMono.variable} h-full`}
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
