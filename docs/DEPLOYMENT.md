@@ -28,22 +28,17 @@ pnpm start      # serve the production build
 pnpm lint       # eslint, must be clean before pushing
 ```
 
-## GitHub setup
+## GitHub
 
-The project was initialised as a git repository by `create-next-app` and has an
-initial commit already.
+The repository is live at
+**https://github.com/broadbrandsa/cheekymediawebsite**, on the `main` branch.
+The project folder is the repository root, so `package.json` sits at the top
+level. That matters for the Vercel root directory setting below.
 
-```bash
-gh repo create cheeky-media --private --source=. --remote=origin
-git push -u origin main
-```
-
-Or create the repository in the GitHub UI and then:
-
-```bash
-git remote add origin git@github.com:<org>/cheeky-media.git
-git push -u origin main
-```
+Note the repository is **public**. There are no secrets in it (every key comes
+from environment variables, and `.env.local` is gitignored), so this is safe,
+but it does mean the code and this documentation are readable by anyone. If that
+is not wanted, switch it to private in the repository settings.
 
 Branch strategy, kept simple because the team is small:
 
@@ -59,7 +54,7 @@ Vercel detects most of them correctly, but check rather than assume.
 | Setting | Value |
 |---|---|
 | Framework preset | Next.js |
-| Root directory | `cheeky-media` (the repository root if you push the project folder itself) |
+| Root directory | **Leave blank.** `package.json` is at the repository root. |
 | Build command | `pnpm build` |
 | Install command | `pnpm install` |
 | Output directory | **Leave blank.** Next.js manages this. Setting it breaks the build. |
@@ -68,9 +63,8 @@ Vercel detects most of them correctly, but check rather than assume.
 Do not add a `vercel.json`. Nothing in this project needs one, and an
 unnecessary config file is a thing that silently goes stale.
 
-The root directory setting depends on how you push. If the repository root is
-the `cheeky-media` folder, leave root directory blank. If you push the parent
-folder, set it to `cheeky-media`.
+When importing, Vercel will detect Next.js and pnpm on its own. The only setting
+worth checking by hand is Output Directory, which must stay empty.
 
 ## Environment variables
 
