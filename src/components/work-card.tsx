@@ -18,14 +18,18 @@ export function WorkCard({
   item,
   priority = false,
   className,
+  tabIndex,
 }: {
   item: WorkCardItem;
   priority?: boolean;
   className?: string;
+  /** Set to -1 for duplicated cards so they stay out of the tab order. */
+  tabIndex?: number;
 }) {
   return (
     <Link
       href={`/work/${item.slug}`}
+      tabIndex={tabIndex}
       className={cn("group flex flex-col", className)}
     >
       <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-secondary">

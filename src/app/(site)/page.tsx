@@ -1,11 +1,11 @@
 import { Clients } from "@/components/sections/clients";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
-import { FeaturedWork } from "@/components/sections/featured-work";
 import { Hero } from "@/components/sections/hero";
 import { Intro } from "@/components/sections/intro";
 import { ServicesOverview } from "@/components/sections/services-overview";
 import { Stats } from "@/components/sections/stats";
+import { WorkScroller } from "@/components/sections/work-scroller";
 import { Team } from "@/components/sections/team";
 import { getWork } from "@/lib/content";
 
@@ -17,11 +17,11 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <WorkScroller items={all} />
       <Intro />
-      <FeaturedWork items={all.slice(0, 6)} />
-      <ServicesOverview />
       <Stats />
       <Clients />
+      <ServicesOverview />
       <Team />
       <Faq />
       <Cta />

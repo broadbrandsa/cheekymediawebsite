@@ -336,3 +336,16 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Scroll rails keep their scrollbar function without the visual clutter. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-smooth { scroll-behavior: auto; }
+}

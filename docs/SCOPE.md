@@ -25,11 +25,12 @@ Homepage, in order:
 
 1. **Hero.** Headline, positioning line, two calls to action, then the
    showreel full bleed.
-2. **Intro.** The "why us" argument plus three pillars.
-3. **Featured work.** Six items, linked through to the full catalogue.
-4. **Services overview.** Numbered list on an inverted surface.
-5. **Stats.** Three credibility figures.
-6. **Clients.** Logo strip.
+2. **Work rail.** All 32 projects in a continuously drifting horizontal
+   scroller, with arrow controls.
+3. **Intro.** Centred "why us" statement, then three pillars.
+4. **Stats.** Three credibility figures.
+5. **Clients.** Logo strip.
+6. **Services overview.** Numbered list on an inverted surface.
 7. **Team.** Three members.
 8. **FAQ.** Six questions in an accordion.
 9. **CTA.** Contact prompt with phone.
