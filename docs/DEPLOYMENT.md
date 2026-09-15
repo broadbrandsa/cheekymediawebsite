@@ -205,6 +205,25 @@ slash, which matters because that is how Google has them indexed.
 All are 308 permanent redirects, so search engines transfer ranking rather than
 treating the new URLs as unrelated pages.
 
+## Images do not use Vercel's optimizer
+
+Vercel meters image optimization, and the Hobby plan's allowance ran out.
+Every `/_next/image` request started returning **402
+OPTIMIZED_IMAGE_REQUEST_PAYMENT_REQUIRED**, so no image on the site loaded.
+
+`src/lib/image-loader.ts` is a custom `next/image` loader wired up in
+`next.config.ts`. Sanity URLs get width, quality and `auto=format` appended so
+its own CDN does the resizing and format conversion; local files in `/public`
+are returned untouched, since they are already compressed.
+
+Nothing is lost by this. Sanity's CDN was already doing the work, so sending
+its output through a second optimizer was duplication. It also means the site
+no longer consumes a metered resource, so this will not recur.
+
+If you ever move to a Vercel plan with a larger allowance and want the built-in
+optimizer back, delete `loader` and `loaderFile` from `next.config.ts`. The
+`remotePatterns` entry is already there and would take over.
+
 ## Post-launch checks
 
 - Submit the form and confirm the email arrives

@@ -2,10 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // Vercel's image optimizer is metered and exhausted on the Hobby plan,
+    // returning 402 for every request. Sanity's CDN already does the resizing
+    // and format conversion, so we hand off to it instead. See
+    // src/lib/image-loader.ts.
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
     remotePatterns: [
       {
-        // Images uploaded through the studio are served from Sanity's CDN.
-        // Without this, next/image rejects them and the page 500s.
         protocol: "https",
         hostname: "cdn.sanity.io",
         pathname: "/images/**",
