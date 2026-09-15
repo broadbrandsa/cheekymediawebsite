@@ -261,6 +261,17 @@ marquee has its own `prefers-reduced-motion` rule, because the blanket
 reduced-motion reset would otherwise freeze it halfway through its travel
 rather than at its start.
 
+## Navigation
+
+`site.nav` in `src/content/site.ts` is the single source for both the header
+and the footer. An entry with a `children` array renders as a dropdown on
+desktop and as a nested list in the mobile sheet; the footer's bottom row skips
+those parents, since the four services already have their own column above.
+
+There is deliberately no `/services` landing page. The menu goes straight to
+the four service pages, and `/services` itself redirects to the homepage so a
+stale link or bookmark does not dead-end.
+
 ## Social profiles
 
 Defined once in `src/content/site.ts` under `social`, rendered by

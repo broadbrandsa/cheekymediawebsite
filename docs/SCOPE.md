@@ -7,8 +7,7 @@
 | `/` | Static | Sections composed from `src/content` |
 | `/work` | Static | Full catalogue, filterable by category |
 | `/work/[slug]` | Static, 32 pages | `src/content/work.ts`, overridden by Sanity |
-| `/services` | Static | Overview of all four services |
-| `/services/[slug]` | Static, 4 pages | `src/content/services.ts` |
+| `/services/[slug]` | Static, 4 pages | `src/content/services.ts`. There is no `/services` index; the nav opens a menu straight to these four. |
 | `/about` | Static | `src/content/about.ts` and `team.ts` |
 | `/journal` | ISR, 60s | Sanity |
 | `/journal/[slug]` | ISR, 60s | Sanity |

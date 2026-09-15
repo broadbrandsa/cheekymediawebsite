@@ -36,7 +36,7 @@ export function ServicesOverview() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="section-y bg-contrast text-on-contrast">
+    <section id="services" className="section-y bg-contrast text-on-contrast">
       <div className="shell">
         <p className="label-mono text-coral">What we do</p>
         <h2 className="type-h2 mt-5 max-w-[18ch]">

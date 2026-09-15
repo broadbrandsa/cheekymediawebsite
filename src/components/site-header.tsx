@@ -4,8 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Sheet,
   SheetContent,
@@ -84,6 +90,47 @@ export function SiteHeader() {
             {site.nav.map((item) => {
               const active =
                 pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+              if ("children" in item && item.children) {
+                return (
+                  <DropdownMenu key={item.href}>
+                    <DropdownMenuTrigger
+                      className={cn(
+                        "relative -my-3 inline-flex items-center gap-1.5 py-3 text-sm outline-none transition-colors",
+                        active
+                          ? "text-foreground"
+                          : "text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      {item.label}
+                      <ChevronDown className="size-3.5 transition-transform duration-200 data-[state=open]:rotate-180" />
+                      {active && (
+                        <span className="absolute bottom-1.5 left-0 h-px w-full bg-coral" />
+                      )}
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      align="center"
+                      sideOffset={18}
+                      className="w-60 rounded-2xl border-border p-2"
+                    >
+                      {item.children.map((child) => (
+                        <DropdownMenuItem key={child.href} asChild>
+                          <Link
+                            href={child.href}
+                            className={cn(
+                              "cursor-pointer rounded-xl px-3 py-3 text-sm",
+                              pathname === child.href && "text-coral-text",
+                            )}
+                          >
+                            {child.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                );
+              }
+
               return (
                 <Link
                   key={item.href}
@@ -147,19 +194,50 @@ export function SiteHeader() {
                   </button>
                 </div>
                 <nav className="flex flex-col px-6 pt-6">
-                  {site.nav.map((item, i) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="flex items-baseline gap-4 border-b border-on-contrast/15 py-5 font-display text-4xl transition-colors hover:text-coral"
-                    >
-                      <span className="label-mono text-on-contrast/50">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {item.label}
-                    </Link>
-                  ))}
+                  {site.nav.map((item, i) => {
+                    const children = "children" in item ? item.children : null;
+                    if (children) {
+                      return (
+                        <div
+                          key={item.href}
+                          className="border-b border-on-contrast/15 py-5"
+                        >
+                          <p className="flex items-baseline gap-4 font-display text-4xl">
+                            <span className="label-mono text-on-contrast/50">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            {item.label}
+                          </p>
+                          <ul className="mt-4 space-y-1 pl-12">
+                            {children.map((child) => (
+                              <li key={child.href}>
+                                <Link
+                                  href={child.href}
+                                  onClick={() => setOpen(false)}
+                                  className="block py-2 text-lg text-on-contrast/70 transition-colors hover:text-coral"
+                                >
+                                  {child.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    }
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="flex items-baseline gap-4 border-b border-on-contrast/15 py-5 font-display text-4xl transition-colors hover:text-coral"
+                      >
+                        <span className="label-mono text-on-contrast/50">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {item.label}
+                      </Link>
+                    );
+                  })}
                   <Link
                     href="/contact"
                     onClick={() => setOpen(false)}

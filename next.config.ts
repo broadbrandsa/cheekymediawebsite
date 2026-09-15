@@ -72,6 +72,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // The services index was removed in favour of a nav dropdown; the
+      // individual /services/<slug> pages are unaffected.
+      { source: "/services", destination: "/", permanent: false },
+
       // Renamed pages.
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/contact-us", destination: "/contact", permanent: true },

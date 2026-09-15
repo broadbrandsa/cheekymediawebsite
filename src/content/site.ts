@@ -22,9 +22,22 @@ export const site = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=43+Central+St+Houghton+Estate+Johannesburg+2198",
   },
+  /**
+   * Top-level navigation. "Services" has no landing page of its own; it opens
+   * a menu straight to the four service pages.
+   */
   nav: [
     { label: "Work", href: "/work" },
-    { label: "Services", href: "/services" },
+    {
+      label: "Services",
+      href: "/services",
+      children: [
+        { label: "Video Production", href: "/services/video-production" },
+        { label: "Brand Integration", href: "/services/brand-integration" },
+        { label: "Digital Media", href: "/services/digital-media" },
+        { label: "Corporate", href: "/services/corporate" },
+      ],
+    },
     { label: "About", href: "/about" },
     { label: "Journal", href: "/journal" },
     { label: "Contact", href: "/contact" },

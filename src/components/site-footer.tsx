@@ -89,15 +89,17 @@ export function SiteFooter() {
             &copy; {new Date().getFullYear()} {site.name}. Level 1 BBBEE.
           </p>
           <nav className="flex flex-wrap gap-x-6 gap-y-2">
-            {site.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="label-mono text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {site.nav
+              .filter((item) => !("children" in item))
+              .map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="label-mono text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
           </nav>
         </div>
       </div>

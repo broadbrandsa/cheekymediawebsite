@@ -32,11 +32,11 @@ export default async function ServiceDetailPage({
     <>
       <section className="shell pb-16 pt-16 sm:pt-24">
         <Link
-          href="/services"
+          href="/#services"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-coral"
         >
           <ArrowLeft className="size-4" />
-          All services
+          Back home
         </Link>
 
         <h1 className="type-h1 mt-8 max-w-[16ch]">
