@@ -336,19 +336,3 @@
     transition-duration: 0.01ms !important;
   }
 }
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.marquee {
-  animation: marquee-scroll 45s linear infinite;
-}
-.marquee:hover { animation-play-state: paused; }
-
-/* The blanket reduced-motion rule below would leave the marquee stopped
-   halfway through its travel, so reset it to its start instead. */
-@media (prefers-reduced-motion: reduce) {
-  .marquee { animation: none !important; transform: none !important; }
-}

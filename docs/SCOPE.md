@@ -23,13 +23,16 @@ That is 48 routes at build time.
 
 Homepage, in order:
 
-1. **Hero.** Headline, positioning line, two calls to action, discipline list.
-2. **Clients.** A single row of broadcaster and brand names.
-3. **Intro.** The "why us" argument plus four credibility stats.
-4. **Featured work.** Six items, linked through to the full catalogue.
-5. **Services overview.** Four cards in a bordered grid.
-6. **Team.** Three members.
-7. **CTA.** Contact prompt with phone and email.
+1. **Hero.** Headline, positioning line, two calls to action, then the
+   showreel full bleed.
+2. **Intro.** The "why us" argument plus three pillars.
+3. **Featured work.** Six items, linked through to the full catalogue.
+4. **Services overview.** Numbered list on an inverted surface.
+5. **Stats.** Three credibility figures.
+6. **Clients.** Logo strip.
+7. **Team.** Three members.
+8. **FAQ.** Six questions in an accordion.
+9. **CTA.** Contact prompt with phone.
 
 Reusable across other pages: `Clients`, `Team`, `ServicesOverview`, `Cta`,
 `WorkCard`, `WorkGrid`.
