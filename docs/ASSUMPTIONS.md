@@ -29,8 +29,12 @@ the rebuild.
 2. **The homepage testimonials are fake.** Two quotes attributed to "Jorge
    Russell" and "Dale Elliott", both placeholder text from the theme demo. They
    have been removed rather than rewritten, because inventing testimonials for a
-   real company is not something to do quietly. If there are real client quotes,
-   they should go back in.
+   real company is not something to do quietly.
+
+   A placeholder quote card sat on the hero for a while, clearly labelled as
+   one. That has now been removed too, so **the site currently carries no
+   social proof at all**. Two real client quotes with names and companies would
+   be the single highest-value content addition left.
 3. **The "Why Cheeky Media" paragraph is truncated.** It ends mid-sentence on
    "...embedding your brand into a show, we ensure". The rebuilt version
    completes the thought, but the intended ending is a guess.

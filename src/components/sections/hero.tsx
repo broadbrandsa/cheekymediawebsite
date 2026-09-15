@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 import { VideoPlayer } from "@/components/video-player";
 import { site } from "@/content/site";
@@ -41,36 +41,12 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Full-bleed showreel, with a floating quote card overlapping it. */}
-      <div className="relative">
-        <VideoPlayer
-          videoId={site.showreelId}
-          poster="/images/work/barcelo.jpg"
-          title="Cheeky Media showreel"
-          className="rounded-none sm:aspect-[21/9]"
-        />
-
-        <div className="shell relative">
-          <figure className="-mt-16 ml-auto max-w-sm rounded-3xl border border-border bg-card p-6 shadow-xl shadow-ink/10 sm:-mt-24">
-            <div className="flex gap-0.5 text-coral" aria-hidden>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-3.5 fill-current" />
-              ))}
-            </div>
-            <blockquote className="mt-4 font-display text-xl leading-snug">
-              &ldquo;They turned a tight brief into a shoot that actually
-              landed, and they did it without blowing the budget.&rdquo;
-            </blockquote>
-            <figcaption className="mt-5 border-t border-border pt-4">
-              <p className="text-sm font-medium">Brand partner</p>
-              <p className="label-mono mt-1 text-muted-foreground">
-                Placeholder, pending a real client quote
-              </p>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-
+      <VideoPlayer
+        videoId={site.showreelId}
+        poster="/images/work/barcelo.jpg"
+        title="Cheeky Media showreel"
+        className="rounded-none sm:aspect-[21/9]"
+      />
     </section>
   );
 }
