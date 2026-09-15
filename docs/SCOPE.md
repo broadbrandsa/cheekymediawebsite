@@ -27,13 +27,14 @@ Homepage, in order:
    showreel full bleed.
 2. **Work rail.** All 32 projects in a continuously drifting horizontal
    scroller, with arrow controls.
-3. **Intro.** Centred "why us" statement, then three pillars.
-4. **Stats.** Three credibility figures.
-5. **Clients.** Logo strip.
+3. **Intro.** Centred "why us" statement and a link through to About.
+4. **Clients.** Logo strip, reading as part of the intro above it.
+5. **Pillars.** Three "how we work" cards.
 6. **Services overview.** Numbered list on an inverted surface.
-7. **Team.** Three members.
-8. **FAQ.** Six questions in an accordion.
-9. **CTA.** Contact prompt with phone.
+7. **Stats.** Three credibility figures.
+8. **Team.** Three members.
+9. **FAQ.** Six questions in an accordion.
+10. **CTA.** Contact prompt with phone.
 
 Reusable across other pages: `Clients`, `Team`, `ServicesOverview`, `Cta`,
 `WorkCard`, `WorkGrid`.

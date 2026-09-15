@@ -4,7 +4,7 @@ import { about } from "@/content/about";
 
 export function Clients() {
   return (
-    <section className="section-y">
+    <section className="py-16">
       <div className="shell">
         <p className="label-mono text-center text-muted-foreground">
           Broadcasters and brands we have worked with
