@@ -2,6 +2,9 @@ export type Service = {
   slug: string;
   title: string;
   short: string;
+  /** Background still for the expandable panel on the homepage.
+   *  Placeholders borrowed from the work catalogue, to be replaced. */
+  image: string;
   intro: string[];
   offerings: { title: string; body: string }[];
   why: string;
@@ -11,6 +14,7 @@ export const services: Service[] = [
   {
     slug: "video-production",
     title: "Video Production",
+    image: "/images/work/tms.jpg",
     short:
       "Live television, commercials, film and branded content, shot and finished in our own facilities.",
     intro: [
@@ -40,6 +44,7 @@ export const services: Service[] = [
   {
     slug: "brand-integration",
     title: "Brand Integration",
+    image: "/images/work/barcelo.jpg",
     short:
       "Putting your brand inside content people already choose to watch, in a way that does not make them wince.",
     intro: [
@@ -65,6 +70,7 @@ export const services: Service[] = [
   {
     slug: "digital-media",
     title: "Digital Media",
+    image: "/images/work/mtn-montage.jpg",
     short:
       "Social, performance, creators and campaigns, built to move people rather than just count them.",
     intro: [
@@ -94,6 +100,7 @@ export const services: Service[] = [
   {
     slug: "corporate",
     title: "Corporate",
+    image: "/images/work/sauceland.jpg",
     short:
       "Internal comms, corporate films, event content and the work that makes a big organisation sound human.",
     intro: [

@@ -159,6 +159,23 @@ non-browser traffic, not because the page is missing.
 already depends on it, and leaving it out of the social list would have been
 odd. Say the word if it should not be listed alongside the others.
 
+## Service panel images are placeholders
+
+The expandable services section on the homepage needs a still per service.
+Those are currently borrowed from the work catalogue and are **not the right
+images**:
+
+| Service | Placeholder |
+|---|---|
+| Video Production | `/images/work/tms.jpg` |
+| Brand Integration | `/images/work/barcelo.jpg` |
+| Digital Media | `/images/work/mtn-montage.jpg` |
+| Corporate | `/images/work/sauceland.jpg` |
+
+Swap them in `src/content/services.ts` under each service's `image` field.
+Landscape, 1600px wide or better, since they fill a tall panel and get
+darkened behind text.
+
 ## Things deliberately not carried over
 
 - The Slider Revolution hero video. The source `TMC-S7-INTRO_1.mp4` was
